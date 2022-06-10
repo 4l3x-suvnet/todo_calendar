@@ -38,3 +38,17 @@
 .calendar-grid div {
   width: calc(100% / 7);
 }
+
+.aside-header {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aside-header h1,
+h2 {
+  text-align: center;
+  margin: 1;
+  vertical-align: middle;
+}
