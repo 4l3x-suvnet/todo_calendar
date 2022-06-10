@@ -1,0 +1,31 @@
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.weekdays {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-grid {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.weekdays, .calendar-grid {
+    text-align: center;
+}
+
+.weekdays div, .calendar-grid div {
+    width: calc(100%/7);
+}
