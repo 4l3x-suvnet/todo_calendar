@@ -38,3 +38,7 @@
 .calendar-grid div {
   width: calc(100% / 7);
 }
+
+.today {
+    background-color: lightgray;
+}
