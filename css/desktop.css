@@ -40,10 +40,24 @@
 }
 
 .weather {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+}
 
 .today {
-    background-color: lightgray;
+  background-color: lightgray;
+}
+
+.aside-header {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aside-header h1,
+h2 {
+  text-align: center;
+  margin: 1;
+  vertical-align: middle;
 }
