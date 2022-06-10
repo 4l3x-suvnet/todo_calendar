@@ -38,3 +38,8 @@
 .calendar-grid div {
   width: calc(100% / 7);
 }
+
+.weather {
+    display: flex;
+    align-items: center;
+  }
