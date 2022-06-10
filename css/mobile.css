@@ -1,0 +1,10 @@
+@media only screen and (max-width: 475px) {
+    .calendar {
+        display: none;
+    }
+    .content-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0 2rem;
+      }
+  }
