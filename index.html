@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <script defer src="js/weather.js"></script>
+    <script defer src="js/todos.js"></script>
     <script src="https://kit.fontawesome.com/293fc10d56.js" crossorigin="anonymous"></script>
 </head>
 
@@ -30,9 +31,13 @@
                 <h1>Place holder for day</h1>
                 <h2>Place holder for date</h2>
             </div>
-            <div>
-                <h3>Todo item:</h3>
-                <p>Detailed information about todo.</p>
+            <div class="todo-container">
+                <div class="todo-list"></div>
+
+                <input type="text" placeholder="Add todo" class="todo-input">
+                <button class="add">
+                    Add
+                </button>
             </div>
         </aside>
 
