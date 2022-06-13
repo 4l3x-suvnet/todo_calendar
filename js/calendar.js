@@ -1,5 +1,6 @@
 const date = new Date();
-
+const maxDays = 42;
+let gridDays = 0;
 // Sätter första datumet i månaden till 1
 date.setDate(1);
 
@@ -9,8 +10,7 @@ const renderCalendar = () => {
   const monthDays = document.querySelector(".calendar-grid");
   const firstDayIndex = date.getDay();
   const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-  const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-  const nextDays = 7 - lastDayIndex - 1;
+  const maxNextDays = 14;
 
   const months = [
     "January",
@@ -35,6 +35,7 @@ const renderCalendar = () => {
 
   // Loopar igenom föregående månads sista dagar för att fylla ut första veckan
   for(let x = firstDayIndex; x > 0; x--) {
+    gridDays++;
     const dayX = document.createElement("div");
     dayX.classList.add("prev-date");
     dayX.innerHTML = prevLastDay - x + 1;
@@ -42,6 +43,7 @@ const renderCalendar = () => {
   }
 
   for(let i = 1; i <= lastDay; i++) {
+    gridDays++;
     // Om dagens datum = dagens datum, skapa en today div
     if(i === new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
       const dayX = document.createElement("div");
@@ -60,12 +62,17 @@ const renderCalendar = () => {
   }
 
     // Loopar igenom nästkommande månad för att fylla ut sista veckan i gridet
-    for(let y = 1; y <= nextDays; y++) {
-      const dayX = document.createElement('div');
-      dayX.classList.add('next-date');
-      dayX.innerHTML = y;
-      monthDays.appendChild(dayX);
-    }  
+    for(let y = 1; y <= maxNextDays; y++) {
+      if(gridDays != maxDays)
+      {
+        gridDays++;
+        const dayX = document.createElement('div');
+        dayX.classList.add('next-date');
+        dayX.innerHTML = y;
+        monthDays.appendChild(dayX);
+      }
+      else break;
+    }
 };
 
 // Sätt nuvarande månad till navigeringsmånad, t ex juni = 5
@@ -77,6 +84,7 @@ document.querySelector(".prev").addEventListener("click", () => {
   navigateMonth--;
   date.setMonth(navigateMonth);
   console.log(date.getFullYear());
+  gridDays = 0;
 
   if (navigateMonth < 0) {
     navigateMonth = 11;
@@ -90,6 +98,7 @@ document.querySelector(".next").addEventListener("click", () => {
   navigateMonth++;
   date.setMonth(navigateMonth);
   console.log(date.getFullYear());
+  gridDays = 0;
 
   if (navigateMonth > 11) {
     navigateMonth = 0;
