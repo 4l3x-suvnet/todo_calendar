@@ -42,6 +42,11 @@
 .weather {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.weatherContainer {
+  text-align: center;
 }
 
 .today {
