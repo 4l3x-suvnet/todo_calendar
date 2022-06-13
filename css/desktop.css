@@ -61,3 +61,7 @@ h2 {
   margin: 1;
   vertical-align: middle;
 }
+
+.item-container {
+  display: flex;
+}
