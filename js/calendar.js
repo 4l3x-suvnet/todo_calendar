@@ -7,7 +7,9 @@ const renderCalendar = () => {
   const month = date.getMonth();
   
   const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); 
-  const monthDays = document.querySelector('.calendar-grid')
+  const monthDays = document.querySelector(".calendar-grid");
+  const firstDayIndex = date.getDay();
+  const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
   const months = [
     "January",
@@ -27,22 +29,30 @@ const renderCalendar = () => {
     months[navigateMonth] + " " + date.getFullYear();
   console.log(month);
 
-  let daysOfMonth = document.querySelector('.calendar-grid');
-  daysOfMonth.innerHTML = '';
-    
+  let daysOfMonth = document.querySelector(".calendar-grid");
+  daysOfMonth.innerHTML = "";
+
+  // Loopar igenom föregående månads sista dagar för att fylla ut första veckan
+  for(let x = firstDayIndex; x > 0; x--) {
+    const dayX = document.createElement("div");
+    dayX.classList.add("prev-date");
+    dayX.innerHTML = prevLastDay - x + 1;
+    monthDays.appendChild(dayX);
+  }
+
   for(let i = 1; i <= lastDay; i++) {
     // Om dagens datum = dagens datum, skapa en today div
     if(i === new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-      const dayX = document.createElement('div');
-      dayX.classList.add('today');
+      const dayX = document.createElement("div");
+      dayX.classList.add("today");
       dayX.innerHTML = i;
       monthDays.appendChild(dayX);
     }
 
     //  Annars, skapa div för vanlig dag
     else {
-      const dayX = document.createElement('div');
-      dayX.classList.add('normal-date');
+      const dayX = document.createElement("div");
+      dayX.classList.add("normal-date");
       dayX.innerHTML = i;
       monthDays.appendChild(dayX);
     }
