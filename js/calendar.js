@@ -16,7 +16,7 @@ const renderCalendar = () => {
     "November",
     "December",
   ];
-  document.querySelector(".test").innerHTML =
+  document.querySelector(".current-month").innerHTML =
     months[navigateMonth] + " " + date.getFullYear();
   console.log(month);
 };
