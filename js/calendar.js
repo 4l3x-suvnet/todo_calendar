@@ -5,11 +5,12 @@ date.setDate(1);
 
 const renderCalendar = () => {
   const month = date.getMonth();
-  
   const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); 
   const monthDays = document.querySelector(".calendar-grid");
   const firstDayIndex = date.getDay();
   const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+  const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+  const nextDays = 7 - lastDayIndex - 1;
 
   const months = [
     "January",
@@ -57,6 +58,14 @@ const renderCalendar = () => {
       monthDays.appendChild(dayX);
     }
   }
+
+    // Loopar igenom nästkommande månad för att fylla ut sista veckan i gridet
+    for(let y = 1; y <= nextDays; y++) {
+      const dayX = document.createElement('div');
+      dayX.classList.add('next-date');
+      dayX.innerHTML = y;
+      monthDays.appendChild(dayX);
+    }  
 };
 
 // Sätt nuvarande månad till navigeringsmånad, t ex juni = 5
