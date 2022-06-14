@@ -98,4 +98,16 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
+document.querySelector(".calendar-grid").addEventListener("click", (e) => {
+  const Name = "selectedDay";
+
+  if(e.target.classList.contains("calendar-grid") == false)
+  {
+    if(e.target.classList.contains(Name))
+      e.target.classList.remove(Name)
+    else
+      e.target.classList.add(Name);
+  }
+});
+
 renderCalendar();
