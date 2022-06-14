@@ -1,46 +1,56 @@
 let todoItems = [];
 
-const add = document.querySelector('.add');
+const add = document.querySelector(".add");
+let idCounter = 1;
 
 function renderTodo(todo) {
-  const list = document.querySelector('.todo-list');
-  const itemContainer = document.createElement('div');
-  const item = document.createElement('div');
-  const remove = document.createElement('button');
+  const list = document.querySelector(".todo-list");
+  const itemContainer = document.createElement("div");
+  const item = document.createElement("div");
+  const remove = document.createElement("button");
 
-  itemContainer.classList.add('item-container');
-  item.classList.add('item');
+  itemContainer.classList.add("item-container");
+  item.classList.add("item");
 
-  item.innerHTML = todo.text;
-  remove.innerHTML = 'Remove';
+  item.innerHTML = todo.title;
+  item.innerHTML += todo.description;
+  remove.innerHTML = "Remove";
 
   list.append(itemContainer);
   itemContainer.append(item);
   itemContainer.append(remove);
 
-  remove.addEventListener('click', () => removeTodo(itemContainer));
+  remove.addEventListener("click", () => removeTodo(itemContainer));
 }
 
 function removeTodo(itemContainer) {
   itemContainer.parentNode.removeChild(itemContainer);
 }
 
-function addTodo(text) {
+function addTodo(title, description) {
   const todo = {
-    text,
+    title,
+    description,
+    id: idCounter,
+    date: new Date().toLocaleDateString(),
+    todoTime: new Date().toLocaleTimeString(),
   };
-
+  idCounter++;
   todoItems.push(todo);
   renderTodo(todo);
+  console.log(todo); //Just during development phase
 }
 
-add.addEventListener('click', () => {
-  const input = document.querySelector('.todo-input');
+add.addEventListener("click", () => {
+  const inputTitle = document.querySelector(".todo-input-title");
+  const inputDesc = document.querySelector(".todo-input-desc");
 
-  const text = input.value;
+  const title = inputTitle.value;
+  const desc = inputDesc.value;
 
-  if (text !== '') {
-    addTodo(text);
-    input.value = '';
+  if (title !== "") {
+    addTodo(title, desc);
+    inputTitle.value = "";
+    inputDesc.value = "";
   }
 });
