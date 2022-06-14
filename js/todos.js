@@ -1,6 +1,7 @@
 let todoItems = [];
 
 const add = document.querySelector(".add");
+let idCounter = 1;
 
 function renderTodo(todo) {
   const list = document.querySelector(".todo-list");
@@ -30,10 +31,11 @@ function addTodo(title, description) {
   const todo = {
     title,
     description,
+    id: idCounter,
     date: new Date().toLocaleDateString(),
     todoTime: new Date().toLocaleTimeString(),
   };
-
+  idCounter++;
   todoItems.push(todo);
   renderTodo(todo);
   console.log(todo); //Just during development phase
