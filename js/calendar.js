@@ -99,14 +99,14 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 document.querySelector(".calendar-grid").addEventListener("click", (e) => {
-  const Name = "selectedDay";
+  const name = "selectedDay";
 
   if(e.target.classList.contains("calendar-grid") == false)
   {
-    if(e.target.classList.contains(Name))
-      e.target.classList.remove(Name)
+    if(e.target.classList.contains(name))
+      e.target.classList.remove(name)
     else
-      e.target.classList.add(Name);
+      e.target.classList.add(name);
   }
 });
 
