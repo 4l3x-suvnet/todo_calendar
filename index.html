@@ -39,13 +39,28 @@
                 </div>
             </div>
             <div class="todo-container">
-                <div class="todo-list"></div>
-
-                <input type="text" placeholder="Todo title" class="todo-input-title">
-                <input type="text" placeholder="Todo description" class="todo-input-desc">
+               
                 <button class="add">
-                    Add
+                    Add Todo
                 </button>
+
+                <div class="form-popup">
+                    <form class="form-container" id="todo-form">
+                        <h1>TODO</h1>
+                
+                        <label for="TodoTitle"><b>Title</b></label>
+                        <input type="text" placeholder="Enter Title" name="title" required>
+                
+                        <label for="desc"><b>Description</b></label>
+                        <input type="text" placeholder="Enter Description" name="description" required>
+                
+                        <button type="submit" class="submitTodo">Submit</button>
+                        <button type="button" class="closeTodoForm">Close</button>
+                    </form>
+                </div>
+
+                <div class="todo-list"></div>     
+
             </div>
         </aside>
 
