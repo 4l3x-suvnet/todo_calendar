@@ -32,6 +32,8 @@ header h1 {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  background-image: url("/img/calendar-background.png");
+  background-size: cover;
 }
 
 .calendar-grid div {
