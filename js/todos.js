@@ -1,4 +1,7 @@
-let todoItems = [];
+let todoItems = JSON.parse(localStorage.getItem("todoItems"));
+if (!todoItems) {
+  todoItems = [];
+}
 
 const add = document.querySelector(".add");
 let idCounter = 1;
@@ -20,11 +23,14 @@ function renderTodo(todo) {
   itemContainer.append(item);
   itemContainer.append(remove);
 
-  remove.addEventListener("click", () => removeTodo(itemContainer));
+  remove.addEventListener("click", () => removeTodo(itemContainer, todo));
 }
 
-function removeTodo(itemContainer) {
+function removeTodo(itemContainer, todo) {
   itemContainer.parentNode.removeChild(itemContainer);
+  let todoIndex = todoItems.indexOf(todo);
+  todoItems.splice(todoIndex, 1);
+  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
 }
 
 function addTodo(title, description) {
@@ -37,6 +43,7 @@ function addTodo(title, description) {
   };
   idCounter++;
   todoItems.push(todo);
+  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   renderTodo(todo);
   console.log(todo); //Just during development phase
 }
