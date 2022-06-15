@@ -1,3 +1,6 @@
+navigator.geolocation.getCurrentPosition(getCoordinates, errorHandling);
+const defaultCity = "Stockholm";
+
 function getCoordinates(position) {
   fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.edb81f0c3da10cab4bd7574d25e013b9&format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
   .then((response) => {
@@ -25,4 +28,21 @@ function getWeatherForToday(city) {
   });
 }
 
-navigator.geolocation.getCurrentPosition(getCoordinates);
+function errorHandling(error) {
+  getWeatherForToday(defaultCity);
+  document.querySelector(".weatherCity").innerHTML = defaultCity;
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      console.log(`"User denied the request for Geolocation, using default city '${defaultCity}'"`);
+      break;
+    case error.POSITION_UNAVAILABLE:
+      console.log(`"Location information is unavailable, using default city '${defaultCity}'"`);
+      break;
+    case error.TIMEOUT:
+      console.log(`"The request to get user location timed out, using default city '${defaultCity}'"`);
+      break;
+    case error.UNKNOWN_ERROR:
+      console.log("An unknown error occurred.");
+      break;
+  }
+}
