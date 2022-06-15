@@ -5,9 +5,11 @@ let date = new Date();
 const maxDays = 42;
 let navigateMonth = date.getMonth();
 
-function main() {
+
+
+async function main() {
   getAndRefreshCalendarDate();
-  renderCalendar();
+  await renderCalendar();
 }
 
 function getAndRefreshCalendarDate() {
@@ -19,7 +21,8 @@ function getAndRefreshCalendarDate() {
   return date;
 }
 
-function renderCalendar(dateToRender = date) {
+async function renderCalendar(dateToRender = date) {
+  const holidays = await getHolidays();
   let gridDays = 0;
   date = dateToRender;
 
@@ -54,7 +57,6 @@ function renderCalendar(dateToRender = date) {
   ];
   document.querySelector(".current-month").innerHTML =
     months[navigateMonth] + " " + date.getFullYear();
-  console.log(month);
 
   let daysOfMonth = document.querySelector(".calendar-grid");
   daysOfMonth.innerHTML = "";
@@ -79,15 +81,29 @@ function renderCalendar(dateToRender = date) {
       const dayX = document.createElement("div");
       dayX.classList.add("today");
       dayX.innerHTML = i;
+      if(holidays.dagar[i]['röd dag'] === "Ja") {
+        dayX.classList.add('holiday');
+      }
       monthDays.appendChild(dayX);
     }
 
-    //  Annars, skapa div för vanlig dag
+    //  Annars, skapa div för vanlig dag samt kolla att det är en röd dag
     else {
       const dayX = document.createElement("div");
       dayX.classList.add("normal-date");
       dayX.innerHTML = i;
       monthDays.appendChild(dayX);
+
+      if(holidays.dagar[i - 1]['röd dag'] === "Ja") {
+        dayX.classList.add('holiday');
+      }
+
+      dayX.id = new Date(date.getFullYear(), navigateMonth, i).toLocaleDateString();
+      // 6/6 var inte en röd dag engligt APIt, så det läggs nu in manuellt.
+      if(dayX.id.endsWith('06-06')) {
+        dayX.classList.add('holiday');
+        dayX.classList.add('nationalDay');
+      }
     }
   }
 
