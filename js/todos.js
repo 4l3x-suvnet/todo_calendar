@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", main);
 const openFormButton = document.querySelector(".add");
 const closeFormButton = document.querySelector(".closeTodoForm");
 const toDoForm = document.querySelector("#todo-form");
-let idCounter = 1;
 
 let todoItems = JSON.parse(localStorage.getItem("todoItems"));
 if (!todoItems) {
@@ -14,6 +13,8 @@ function main() {
   bindEventHandlers();
   renderAllTodo();
 }
+
+let idCounter = todoItems.length == 0 ? 0 : todoItems[todoItems.length - 1].id + 1;
 
 function bindEventHandlers() {
   toDoForm.onsubmit = handleFormSubmit;
