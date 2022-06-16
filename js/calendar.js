@@ -151,7 +151,7 @@ document.querySelector(".calendar-grid").addEventListener("click", (e) => {
 
   if (!sameDay)
   {
-    target.classList.add(className);
+    targetDay.classList.add(className);
     selectedDay = targetDay;
   }
   console.log(selectedDay);
