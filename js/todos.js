@@ -12,6 +12,7 @@ if (!todoItems) {
 
 function main() {
   bindEventHandlers();
+  renderAllTodo();
 }
 
 function bindEventHandlers() {
@@ -25,6 +26,12 @@ function handleFormSubmit(e) {
   const formProps = Object.fromEntries(formData);
 
   addTodo(formProps.title, formProps.description);
+}
+
+function renderAllTodo() {
+  todoItems.forEach(todo => {
+    renderTodo(todo)
+  });
 }
 
 function renderTodo(todo) {
