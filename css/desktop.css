@@ -13,6 +13,8 @@ header h1 {
 .content-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  background-image: url(/img/aside-background.jpg);
+  background-size: cover;
 }
 
 .month {
