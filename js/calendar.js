@@ -5,8 +5,6 @@ let date = new Date();
 const maxDays = 42;
 let navigateMonth = date.getMonth();
 
-
-
 async function main() {
   getAndRefreshCalendarDate();
   await renderCalendar();
@@ -80,9 +78,14 @@ async function renderCalendar(dateToRender = date) {
     ) {
       const dayX = document.createElement("div");
       dayX.classList.add("today");
+      dayX.id = new Date(
+        date.getFullYear(),
+        navigateMonth,
+        i
+      ).toLocaleDateString();
       dayX.innerHTML = i;
-      if(holidays.dagar[i]['röd dag'] === "Ja") {
-        dayX.classList.add('holiday');
+      if (holidays.dagar[i]["röd dag"] === "Ja") {
+        dayX.classList.add("holiday");
       }
       monthDays.appendChild(dayX);
     }
@@ -94,15 +97,19 @@ async function renderCalendar(dateToRender = date) {
       dayX.innerHTML = i;
       monthDays.appendChild(dayX);
 
-      if(holidays.dagar[i - 1]['röd dag'] === "Ja") {
-        dayX.classList.add('holiday');
+      if (holidays.dagar[i - 1]["röd dag"] === "Ja") {
+        dayX.classList.add("holiday");
       }
 
-      dayX.id = new Date(date.getFullYear(), navigateMonth, i).toLocaleDateString();
+      dayX.id = new Date(
+        date.getFullYear(),
+        navigateMonth,
+        i
+      ).toLocaleDateString();
       // 6/6 var inte en röd dag engligt APIt, så det läggs nu in manuellt.
-      if(dayX.id.endsWith('06-06')) {
-        dayX.classList.add('holiday');
-        dayX.classList.add('nationalDay');
+      if (dayX.id.endsWith("06-06")) {
+        dayX.classList.add("holiday");
+        dayX.classList.add("nationalDay");
       }
     }
   }
@@ -154,21 +161,34 @@ function calendarNext() {
 
 // Select&De-select calendar grid days OnClick
 let selectedDay;
+let selectedDayId;
 document.querySelector(".calendar-grid").addEventListener("click", (e) => {
   const className = "selectedDay";
   const targetDay = e.target;
   const sameDay = targetDay === selectedDay;
-  
-  if (selectedDay)
-  {  
+
+  if (selectedDay) {
     selectedDay.classList.remove(className);
     selectedDay = undefined;
-  }  
+  }
 
-  if (!sameDay)
-  {
+  if (!sameDay) {
     targetDay.classList.add(className);
     selectedDay = targetDay;
   }
-  console.log(selectedDay);
+  selectedDayId = selectedDay.id;
+  addTodoToCalendar();
+  return selectedDayId;
 });
+
+function addTodoToCalendar() {
+  const selectedDay = document.querySelector(".selectedDay");
+
+  for (let index = 0; index < todoItems.length; index++) {
+    if (todoItems[index].date == selectedDay.id) {
+      console.log(todoItems[index]);
+    } else {
+      console.log("There are no todos for this day");
+    }
+  }
+}
