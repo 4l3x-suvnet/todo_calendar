@@ -246,7 +246,7 @@ button, input, .todo-list {
 }
 
 .form-popup {
-  /* display: none; */
+  display: none;
   border: 3px solid #f1f1f1;
   background-color: #555;
   color: #f1f1f1;

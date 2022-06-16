@@ -41,23 +41,6 @@
             <div class="todo-container">
                 <button class="add">Add Todo</button>
 
-                <div class="form-popup">
-                    <form class="form-container" id="todo-form">
-                        <h1>TODO</h1>
-                
-                        <label for="TodoTitle"><b>Title</b></label>
-                        <input type="text" placeholder="Enter Title" name="title" required>
-                
-                        <label for="desc"><b>Description</b></label>
-                        <input type="text" placeholder="Enter Description" name="description" required>
-                
-                        <div class="addtodo-button-container">
-                            <button type="submit" class="submitTodo">Submit</button>
-                            <button type="button" class="closeTodoForm">Close</button>
-                        </div>
-                    </form>
-                </div>
-
                 <div class="todo-list">
                     <!-- todos are currently placed here when clicking add, re-shape them to fit below hardcoded data -->
                     <!-- in todo-date-container, display todo's by distinct date -->
@@ -94,6 +77,22 @@
         </aside>
 
         <main class="calendar">
+            <div class="form-popup">
+                <form class="form-container" id="todo-form">
+                    <h1>TODO</h1>
+            
+                    <label for="TodoTitle"><b>Title</b></label>
+                    <input type="text" placeholder="Enter Title" name="title" required>
+            
+                    <label for="desc"><b>Description</b></label>
+                    <input type="text" placeholder="Enter Description" name="description" required>
+            
+                    <div class="addtodo-button-container">
+                        <button type="submit" class="submitTodo">Submit</button>
+                        <button type="button" class="closeTodoForm">Close</button>
+                    </div>
+                </form>
+            </div>
             <div class="month">
                 <i class="fa-solid fa-arrow-left prev"></i>
                 <div>
