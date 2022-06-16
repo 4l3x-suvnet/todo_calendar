@@ -89,9 +89,74 @@ h2 {
   vertical-align: middle;
 }
 
+.todo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add {
+  background-color: #555;
+  color: white;
+
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 280px;
+}
+
 .form-popup {
   display: none;
   border: 3px solid #f1f1f1;
+  background-color: #555;
+  color: #f1f1f1;
+
+  height: 400px;
+  width: 300px;
+
+  position: fixed;
+
+  z-index: 100;
+
+  /* Center */
+  left: 50%;
+  top: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.form-popup h1 {
+  color: rgb(216, 238, 196);
+  justify-content: center;
+  display: flex;
+}
+
+.closeTodoForm {
+  position: fixed;
+  top: 2%;
+  right: 2%;
+
+  background-color: rgb(168, 161, 161);
+}
+
+.submitTodo {
+  position: fixed;
+
+  color: rgb(0, 0, 0);
+  background-color: rgb(178, 235, 126);
+
+  width: 100px;
+  height: 50px;
+
+  bottom: 5%;
+  right: 5%;
 }
 
 .item-container {
@@ -108,7 +173,7 @@ h2 {
 }
 
 .nationalDay {
-  background-image: url('https://cdn.countryflags.com/thumbs/sweden/flag-400.png');
+  background-image: url("https://cdn.countryflags.com/thumbs/sweden/flag-400.png");
   background-size: 20%;
   background-repeat: no-repeat;
 }
