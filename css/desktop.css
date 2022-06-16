@@ -89,6 +89,11 @@ h2 {
   vertical-align: middle;
 }
 
+.form-popup {
+  display: none;
+  border: 3px solid #f1f1f1;
+}
+
 .item-container {
   display: flex;
 }

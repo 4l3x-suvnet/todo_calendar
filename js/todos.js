@@ -1,10 +1,31 @@
+document.addEventListener("DOMContentLoaded", main);
+
+const openFormButton = document.querySelector(".add");
+const closeFormButton = document.querySelector(".closeTodoForm");
+const toDoForm = document.querySelector("#todo-form");
+let idCounter = 1;
+
 let todoItems = JSON.parse(localStorage.getItem("todoItems"));
 if (!todoItems) {
   todoItems = [];
 }
 
-const add = document.querySelector(".add");
-let idCounter = 1;
+function main() {
+  bindEventHandlers();
+}
+
+function bindEventHandlers() {
+  toDoForm.onsubmit = handleFormSubmit;
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const formProps = Object.fromEntries(formData);
+
+  addTodo(formProps.title, formProps.description);
+}
 
 function renderTodo(todo) {
   const list = document.querySelector(".todo-list");
@@ -46,18 +67,21 @@ function addTodo(title, description) {
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   renderTodo(todo);
   console.log(todo); //Just during development phase
+  closeForm();
 }
 
-add.addEventListener("click", () => {
-  const inputTitle = document.querySelector(".todo-input-title");
-  const inputDesc = document.querySelector(".todo-input-desc");
-
-  const title = inputTitle.value;
-  const desc = inputDesc.value;
-
-  if (title !== "") {
-    addTodo(title, desc);
-    inputTitle.value = "";
-    inputDesc.value = "";
-  }
+openFormButton.addEventListener("click", () => {
+  openForm();
 });
+
+closeFormButton.addEventListener("click", () => {
+  closeForm();
+});
+
+function closeForm() {
+  document.querySelector(".form-popup").style.display = "none";
+}
+
+function openForm() {
+  document.querySelector(".form-popup").style.display = "block";
+}
