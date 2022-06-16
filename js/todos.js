@@ -59,7 +59,7 @@ function addTodo(title, description) {
     title,
     description,
     id: idCounter,
-    date: new Date().toLocaleDateString(),
+    date: selectedDayId,
     todoTime: new Date().toLocaleTimeString(),
   };
   idCounter++;
