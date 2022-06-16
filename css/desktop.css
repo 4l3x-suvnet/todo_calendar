@@ -1,20 +1,11 @@
-header {
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  background: rgba(78, 78, 78, 0.986);
-}
-
-header h1 {
-  padding: 0.5rem 1rem;
-  color: rgb(202, 202, 202);
-}
-
 .content-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  background-image: url(/img/aside-background.jpg);
-  background-size: cover;
+  grid-template-columns: 2fr 4.5fr;
+  background: #1b1b20;
+  border-radius: 20px;
+  max-width: 80rem;
+  margin: 0 auto;
+  box-shadow: 8px 8px rgba(27, 27, 32, .3);
 }
 
 .month {
@@ -23,6 +14,13 @@ header h1 {
   align-items: center;
   padding: 0 2rem;
   text-align: center;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.month i {
+  font-size: 24px;
 }
 
 .weekdays {
@@ -30,12 +28,11 @@ header h1 {
   align-items: center;
 }
 
+
 .calendar-grid {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  background-image: url("/img/calendar-background.png");
-  background-size: cover;
 }
 
 .calendar-grid div {
@@ -50,38 +47,28 @@ header h1 {
 }
 
 .selectedDay {
-  background-color: lightgray;
+  background-color: #3d3d4a;
+  color: #1b1b20 !important;
 }
 
-.weekdays,
-.calendar-grid {
+.weekdays, .calendar-grid {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .weekdays div,
 .calendar-grid div {
-  width: calc(100% / 7);
+  width: calc(100% / 7 - .2rem);
 }
 
 .weather {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.weatherContainer {
-  text-align: center;
+  justify-content: start;
 }
 
 .today {
-  background-color: gray;
-}
-
-.aside-header {
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-color: #313146e8;
 }
 
 .aside-header h1,
@@ -91,27 +78,171 @@ h2 {
   vertical-align: middle;
 }
 
+.item-container {
+  margin-top: 1rem;
+}
+
+.prev-date,
+.next-date {
+  color: #9d9d9d;
+}
+
+.holiday {
+  color: red;
+}
+
+.nationalDay {
+  background-image: url('https://cdn.countryflags.com/thumbs/sweden/flag-400.png');
+  background-size: 20%;
+  background-repeat: no-repeat;
+}
+
+
+.aside-content-container {
+  color: lightgray;
+}
+
+form {
+  display: grid;
+}
+
+form label, form h1 {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+aside {
+  border-right: 2px solid #3d3d4a;
+  padding: 20px;
+  height: 90vh;
+  border-radius: 20px 0px 0px 20px;
+  padding-bottom: 20rem;
+  overflow: scroll;
+
+  /* hides scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  /* TODO: fix mask-images */
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  /* mask-image: linear-gradient(to top, black 96%, transparent 100%); */
+}
+
+button {
+  background-color: #3d3d4a;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  width: fit-content;
+}
+
+.todo-form {
+  padding-top: 20px;
+}
+
+.todo-date {
+  font-size: x-large;
+}
+
+.todo-title {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.todo-desc
+{
+  font-style: italic;
+  width: 250px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.todo-list {
+  border-radius: 10px;
+  background: #3d3d4a;
+  padding: 10px;
+  margin-top: 1rem;
+  gap: 2rem;
+  display: grid;
+}
+
+.todo-actions {
+  font-size: 16px;
+  gap: .75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.todo-subcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-date, .todo-subcontainer, .todo-desc {
+  margin-bottom: .5rem;
+  align-items: center;
+}
+
+.addtodo-button-container {
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+h1, button, .aside-content-container, .calendar-grid div:hover, .selectedDay {
+  color: lightgray;
+}
+
+input {
+  background-color: #303245;
+  border-radius: 8px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 16px;
+  height: 100%;
+  outline: 0;
+  padding: 8px 20px 8px;
+}
+
+button, input, .todo-list {
+  box-shadow: 2px 4px rgba(0,0,0,.25);
+}
+
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ aside::-webkit-scrollbar {
+  display: none;
+}
+
+.calendar {
+  padding: 20px;
+}
+
+.calendar-grid div {
+  border-radius: 10px;
+}
+.calendar-grid div:hover {
+  background-color: #3d3d4a !important;
+}
+
+.calendar-grid, .weekdays {
+  gap: .2rem;
+}
+
 .todo-container {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.add {
-  background-color: #555;
-  color: white;
-
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 280px;
 }
 
 .form-popup {
@@ -159,23 +290,4 @@ h2 {
 
   bottom: 5%;
   right: 5%;
-}
-
-.item-container {
-  display: flex;
-}
-
-.prev-date,
-.next-date {
-  color: #9d9d9d;
-}
-
-.holiday {
-  color: red;
-}
-
-.nationalDay {
-  background-image: url("https://cdn.countryflags.com/thumbs/sweden/flag-400.png");
-  background-size: 20%;
-  background-repeat: no-repeat;
 }

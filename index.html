@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FantastiCal</title>
     <link rel="stylesheet" href="css/desktop.css">
@@ -22,35 +23,63 @@
 </head>
 
 <body>
-    <header>
-        <h1>FantastiCal</h1>
-    </header>
-
-
     <div class="content-container">
         <aside>
+            <header>
+                <h1>FantastiCal</h1>
+            </header>
             <div class="aside-header">
                 <div class="aside-Content-Container">
+                    <h3>Place holder for day</h3>
+                    <h4>Place holder for date</h4>
                     <div class="weatherContainer">    
                         <div class="weatherCity"></div>
                         <div class="weather"></div>
                     </div>
-                    <h1>Place holder for day</h1>
-                    <h2>Place holder for date</h2>
                 </div>
             </div>
-            
-            <div class="todo-container"> 
-                <button class="add">
-                    Add Todo
-                </button>
+            <div class="todo-container">
+                <button class="add">Add Todo</button>
 
-                <div class="todo-list"></div>            
-            </div>
+                <div class="todo-list">
+                    <!-- todos are currently placed here when clicking add, re-shape them to fit below hardcoded data -->
+                    <!-- in todo-date-container, display todo's by distinct date -->
+                    <div class="todo-date-container">
+                        <div class="todo-date">2022-06-23</div>
+                      <div class="todo-container">
+                        <div class="todo-subcontainer">
+                        <div class="todo-title">Presentation</div>
+                        <div class="todo-actions">
+                          <i class="far fa-edit"></i>
+                            <i class="fa-solid fa-check"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                        </div>
+                        <div class="todo-desc">FantastiCal presentation at 14.30</div>
+                      </div>
+                    </div>
+                    <div class="todo-date-container">
+                        <div class="todo-date">2022-08-25</div>
+                      <div class="todo-container">
+                        <div class="todo-subcontainer">
+                        <div class="todo-title">Test</div>
+                        <div class="todo-actions">
+                          <i class="far fa-edit"></i>
+                            <i class="fa-solid fa-check"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                        </div>
+                        <div class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aliquid sint doloribus ex provident! Distinctio sint porro, quis dolores est repellat ipsa laudantium itaque dolore quia qui omnis saepe perspiciatis!</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </aside>
 
+        <main class="calendar">
             <div class="form-popup">
                 <form class="form-container" id="todo-form">
-                    <h1>TODO-item</h1>
+                    <h1>TODO</h1>
             
                     <label for="TodoTitle"><b>Title</b></label>
                     <input type="text" placeholder="Enter Title" name="title" required>
@@ -58,20 +87,18 @@
                     <label for="desc"><b>Description</b></label>
                     <input type="text" placeholder="Enter Description" name="description" required>
             
-                    <button type="submit" class="submitTodo">Submit</button>
-                    <button type="button" class="closeTodoForm">Close</button>
+                    <div class="addtodo-button-container">
+                        <button type="submit" class="submitTodo">Submit</button>
+                        <button type="button" class="closeTodoForm">Close</button>
+                    </div>
                 </form>
             </div>
-
-        </aside>
-
-        <main class="calendar">
             <div class="month">
-                <i class="fa-solid fa-circle-arrow-left prev"></i>
+                <i class="fa-solid fa-arrow-left prev"></i>
                 <div>
                     <h1 class="current-month">June</h1>
                 </div>
-                <i class="fa-solid fa-circle-arrow-right next"></i>
+                <i class="fa-solid fa-arrow-right next"></i>
             </div>
             <div class="weekdays">
                 <div>Sun</div>
