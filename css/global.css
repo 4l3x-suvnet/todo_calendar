@@ -7,3 +7,9 @@
 html {
   font-family: "Quicksand", sans-serif;
 }
+
+body {
+  background: #3d3d4a;
+  color: white;
+  padding: 2rem;
+}

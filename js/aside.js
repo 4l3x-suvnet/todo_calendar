@@ -20,8 +20,8 @@ function renderDay() {
 
   const timeText = paddedHours + ":" + paddedMinutes;
 
-  const dayItem = asidedateItem.getElementsByTagName("h1");
-  const dateItem = asidedateItem.getElementsByTagName("h2");
+  const dayItem = asidedateItem.getElementsByTagName("h3");
+  const dateItem = asidedateItem.getElementsByTagName("h4");
 
   dayItem[0].innerHTML = weekday + " " + timeText;
   dateItem[0].innerHTML = dateText;
