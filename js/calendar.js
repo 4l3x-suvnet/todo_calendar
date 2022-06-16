@@ -136,12 +136,23 @@ function calendarNext() {
   renderCalendar();
 }
 
-// Highlight on Click
+// Select&De-select calendar grid days OnClick
+let selectedDay;
 document.querySelector(".calendar-grid").addEventListener("click", (e) => {
-  const name = "selectedDay";
+  const className = "selectedDay";
+  const targetDay = e.target;
+  const sameDay = targetDay === selectedDay;
+  
+  if (selectedDay)
+  {  
+    selectedDay.classList.remove(className);
+    selectedDay = undefined;
+  }  
 
-  if (e.target.classList.contains("calendar-grid") == false) {
-    if (e.target.classList.contains(name)) e.target.classList.remove(name);
-    else e.target.classList.add(name);
+  if (!sameDay)
+  {
+    target.classList.add(className);
+    selectedDay = targetDay;
   }
+  console.log(selectedDay);
 });
