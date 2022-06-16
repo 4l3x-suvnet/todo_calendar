@@ -188,7 +188,7 @@ function addTodoToCalendar() {
     if (todoItems[index].date == selectedDay.id) {
       console.log(todoItems[index]);
     } else {
-      console.log("There are no todos for this day");
+      document.getElementById("message").innerHTML= "There are no todos for this day";
     }
   }
 }

@@ -99,6 +99,18 @@ h2 {
   flex-direction: column;
 }
 
+.todo-message {
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .add {
   background-color: #555;
   color: white;
