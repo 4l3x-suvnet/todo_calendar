@@ -88,16 +88,23 @@ closeFormButton.addEventListener("click", () => {
 
 function closeForm() {
   document.querySelector(".form-popup").style.display = "none";
+  const fadeDiv = document.querySelector(".modal-fade");
+  fadeDiv.remove();
 }
 
 function openForm() {
+
   var doc = document.querySelector(".form-popup");
   doc.style.display = "block";
-
+  
+  const main = document.querySelector(".calendar");
+  const fadeDiv = document.createElement('div');
+  fadeDiv.classList.add("modal-fade");
+  main.append(fadeDiv);
+  
   // Find Date element
   var form = doc.firstChild.nextSibling;
   var elements = form.elements;
   var date = elements["date"];
-
   date.value = selectedDayId;
 }
