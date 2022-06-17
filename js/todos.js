@@ -108,21 +108,3 @@ function openForm() {
   var date = elements["date"];
   date.value = selectedDayId;
 }
-
-document.addEventListener("click", (getTodosFromADate) => {
-  const selectedDay = document.querySelector(".selectedDay");
-  let items = JSON.parse(localStorage.getItem("todoItems"));
-  document.getElementById("selectedDate").innerHTML = selectedDay.id;
-
-    items.forEach(function(todo) {
-      if(todo.date == selectedDay.id) { 
-        document.getElementById("todoTitle").innerHTML += todo.title;
-        document.getElementById("todo-description").innerHTML += todo.description;
-      }
-      else {
-        document.getElementById("todoTitle").innerHTML = "";
-        document.getElementById("todo-description").innerHTML = "";
-      }
-    });
-
-});

@@ -201,12 +201,6 @@ button {
   margin: 0 auto;
 }
 
-.todo-date-on-selectedDate {
-  font-size: 20px;
-  color: red;
-}
-
-
 h1, button, .aside-content-container, .calendar-grid div:hover, .selectedDay {
   color: lightgray;
 }
