@@ -26,7 +26,7 @@ function handleFormSubmit(e) {
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
 
-  addTodo(formProps.title, formProps.description, formProps.Date, formProps.Time);
+  addTodo(formProps.title, formProps.description, formProps.date, formProps.time);
 }
 
 function renderAllTodo() {
