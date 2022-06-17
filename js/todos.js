@@ -26,7 +26,7 @@ function handleFormSubmit(e) {
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
 
-  addTodo(formProps.title, formProps.description, formProps.Date, formProps.Time);
+  addTodo(formProps.title, formProps.description, formProps.date, formProps.time);
 }
 
 function renderAllTodo() {
@@ -37,22 +37,76 @@ function renderAllTodo() {
 
 function renderTodo(todo) {
   const list = document.querySelector(".todo-list");
+
+  console.log("todo");
+  console.log(todo);
+
+
+  // Create the <div class = todo-date-container>
   const itemContainer = document.createElement("div");
-  const item = document.createElement("div");
-  const remove = document.createElement("button");
+  itemContainer.classList.add("todo-date-container");
 
-  itemContainer.classList.add("item-container");
-  item.classList.add("item");
+  // Create the todo-date div
+  const dateItem = document.createElement("div");
+  dateItem.classList.add("todo-date");
+  dateItem.innerHTML = todo.date;
+  //Add date to big container
+  itemContainer.append(dateItem);
 
-  item.innerHTML = todo.title;
-  item.innerHTML += todo.description;
-  remove.innerHTML = "Remove";
+  //Create the Todo Container ( container in the container  :) )
+  const detailsContainer = document.createElement("div");
+  detailsContainer.classList.add("todo-container");
+
+  // Create Subcontainer
+  const detailsSubContainer = document.createElement("div");
+  detailsSubContainer.classList.add("todo-subcontainer");
+
+  //Create and Add Title
+  const title = document.createElement("div");
+  title.classList.add("todo-title");
+  title.innerHTML = todo.title;
+
+  detailsSubContainer.append(title);
+
+  //Create button holder
+  const actionsContainer = document.createElement("div");
+  actionsContainer.classList.add("todo-actions");
+
+  // Create and Add Buttons
+  const editButton = document.createElement("i");
+  editButton.classList.add("far");
+  editButton.classList.add("fa-edit");
+  //TODO editButton.addEventListener("click", () => editTodo(itemContainer, todo));
+
+  const doneButton = document.createElement("i");
+  doneButton.classList.add("fa-solid");
+  doneButton.classList.add("fa-check");
+  doneButton.addEventListener("click", () => removeTodo(itemContainer, todo));
+
+  const removeButton = document.createElement("i");
+  removeButton.classList.add("fa-regular");
+  removeButton.classList.add("fa-trash-can");
+  removeButton.addEventListener("click", () => removeTodo(itemContainer, todo));
+
+  actionsContainer.append(editButton);
+  actionsContainer.append(doneButton);
+  actionsContainer.append(removeButton);
+
+  //Add actions to subcontainer 
+  detailsSubContainer.append(actionsContainer);
+
+  // Create Description
+  const descriptionItem = document.createElement("div");
+  descriptionItem.classList.add("todo-desc");
+  descriptionItem.innerHTML = todo.description;
+
+  // Add Desc and subcontainer
+  detailsContainer.append(detailsSubContainer);
+  detailsContainer.append(descriptionItem);
+
+  itemContainer.append(detailsContainer);
 
   list.append(itemContainer);
-  itemContainer.append(item);
-  itemContainer.append(remove);
-
-  remove.addEventListener("click", () => removeTodo(itemContainer, todo));
 }
 
 function removeTodo(itemContainer, todo) {
