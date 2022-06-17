@@ -64,6 +64,13 @@ async function renderCalendar(dateToRender = date) {
     gridDays++;
     const dayX = document.createElement("div");
     dayX.classList.add("prev-date");
+
+    dayX.id = new Date(
+    date.getFullYear(),
+    navigateMonth - 1,
+    prevLastDay - x + 1
+    ).toLocaleDateString();
+
     dayX.innerHTML = prevLastDay - x + 1;
     monthDays.appendChild(dayX);
   }
@@ -120,6 +127,13 @@ async function renderCalendar(dateToRender = date) {
       gridDays++;
       const dayX = document.createElement("div");
       dayX.classList.add("next-date");
+
+      dayX.id = new Date(
+      date.getFullYear(),
+      navigateMonth + 1,
+      y
+      ).toLocaleDateString();
+
       dayX.innerHTML = y;
       monthDays.appendChild(dayX);
     } else break;
