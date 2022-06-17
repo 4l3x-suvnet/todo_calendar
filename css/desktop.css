@@ -194,6 +194,12 @@ button {
   align-items: center;
 }
 
+.todo-date-on-selectedDate {
+  font-size: 20px;
+  color:  lightgray;
+}
+
+
 .addtodo-button-container {
   gap: 1rem;
   display: flex;
