@@ -26,7 +26,7 @@ function handleFormSubmit(e) {
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
 
-  addTodo(formProps.title, formProps.description);
+  addTodo(formProps.title, formProps.description, formProps.Date, formProps.Time);
 }
 
 function renderAllTodo() {
@@ -62,13 +62,13 @@ function removeTodo(itemContainer, todo) {
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
 }
 
-function addTodo(title, description) {
+function addTodo(title, description, date = selectedDayId, todoTime) {
   const todo = {
     title,
     description,
     id: idCounter,
-    date: selectedDayId,
-    todoTime: new Date().toLocaleTimeString(),
+    date, 
+    todoTime 
   };
   idCounter++;
   todoItems.push(todo);
@@ -91,5 +91,13 @@ function closeForm() {
 }
 
 function openForm() {
-  document.querySelector(".form-popup").style.display = "block";
+  var doc = document.querySelector(".form-popup");
+  doc.style.display = "block";
+
+  // Find Date element
+  var form = doc.firstChild.nextSibling;
+  var elements = form.elements;
+  var date = elements["date"];
+
+  date.value = selectedDayId;
 }
