@@ -10,6 +10,7 @@ if (!todoItems) {
 }
 
 function main() {
+  console.log(todoItems);
   bindEventHandlers();
   renderAllTodo();
 }
@@ -29,10 +30,25 @@ function handleFormSubmit(e) {
   addTodo(formProps.title, formProps.description, formProps.date, formProps.time);
 }
 
-function renderAllTodo() {
-  todoItems.forEach(todo => {
-    renderTodo(todo)
+function renderAllTodo(selectedDate = null) {
+
+  const allExistingTodos = document.querySelectorAll(".todo-date-container");
+  allExistingTodos.forEach(todo => {
+    todo.remove();
   });
+
+  if(selectedDate == null) {
+    todoItems.forEach(todo => {
+      renderTodo(todo)
+    });
+  }
+  else {
+    todoItems.forEach(todo => {
+    if(todo.date === selectedDate) {
+      renderTodo(todo)
+    }  
+    });
+  }
 }
 
 function renderTodo(todo) {
@@ -133,6 +149,7 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
 }
 
 openFormButton.addEventListener("click", () => {
+  console.log("aaaa");
   openForm();
 });
 
@@ -162,20 +179,3 @@ function openForm() {
   var date = elements["date"];
   date.value = selectedDayId;
 }
-
-document.addEventListener("click", (getTodosFromADate) => {
-  const selectedDay = document.querySelector(".selectedDay");
-  let items = JSON.parse(localStorage.getItem("todoItems"));
-  document.getElementById("selectedDate").innerHTML = selectedDay.id;
-
-    items.forEach(function(todo) {
-      if(todo.date == selectedDay.id) { 
-        document.getElementById("todoTitle").innerHTML += todo.title;
-        document.getElementById("todo-description").innerHTML += todo.description;
-      }
-      else {
-        document.getElementById("todoTitle").innerHTML = "";
-        document.getElementById("todo-description").innerHTML = "";
-      }
-    });
-  });
