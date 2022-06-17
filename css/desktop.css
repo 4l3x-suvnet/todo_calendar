@@ -166,12 +166,15 @@ button {
 }
 
 .todo-list {
-  border-radius: 10px;
-  background: #3d3d4a;
-  padding: 10px;
   margin-top: 1rem;
   gap: 2rem;
   display: grid;
+}
+
+.todo-date-container {
+  border-radius: 10px;
+  background: #3d3d4a;
+  padding: 10px;
 }
 
 .todo-actions {
@@ -214,7 +217,7 @@ input {
   padding: 8px 20px 8px;
 }
 
-button, input, .todo-list {
+button, input, .todo-date-container {
   box-shadow: 2px 4px rgba(0,0,0,.25);
 }
 
@@ -243,6 +246,7 @@ button, input, .todo-list {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .form-popup {
