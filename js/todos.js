@@ -53,8 +53,6 @@ function handleEditFormSubmit(e) {
 }
 
 function renderAllTodo(selectedDate = null) {
-  sortTodoList();
-
   const allExistingTodos = document.querySelectorAll(".todo-date-container");
   allExistingTodos.forEach((todo) => {
     todo.remove();
@@ -161,8 +159,8 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
   idCounter++;
   todoItems.push(todo);
 
-  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   sortTodoList();
+  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   renderAllTodo(selectedDayId);
 
   closeForm();
@@ -176,8 +174,8 @@ function alterTodo(id, title, description, date, todoTime) {
   itemToChange.date = date;
   itemToChange.todoTime = todoTime;
 
-  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   sortTodoList();
+  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
   renderAllTodo(selectedDayId);
 
   closeForm();
