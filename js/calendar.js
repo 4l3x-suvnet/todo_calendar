@@ -5,10 +5,9 @@ let date = new Date();
 const maxDays = 42;
 let navigateMonth = date.getMonth();
 
-
-
 async function main() {
   getAndRefreshCalendarDate();
+  setDataTheme("dark-mode"); // TODO: Load theme from localstorage, initial theme should be dark-mode
   await renderCalendar();
 }
 
@@ -66,6 +65,13 @@ async function renderCalendar(dateToRender = date) {
     gridDays++;
     const dayX = document.createElement("div");
     dayX.classList.add("prev-date");
+
+    dayX.id = new Date(
+      date.getFullYear(),
+      navigateMonth - 1,
+      prevLastDay - x + 1
+    ).toLocaleDateString();
+
     dayX.innerHTML = prevLastDay - x + 1;
     monthDays.appendChild(dayX);
   }
@@ -80,9 +86,14 @@ async function renderCalendar(dateToRender = date) {
     ) {
       const dayX = document.createElement("div");
       dayX.classList.add("today");
+      dayX.id = new Date(
+        date.getFullYear(),
+        navigateMonth,
+        i
+      ).toLocaleDateString();
       dayX.innerHTML = i;
-      if(holidays.dagar[i]['röd dag'] === "Ja") {
-        dayX.classList.add('holiday');
+      if (holidays.dagar[i]["röd dag"] === "Ja") {
+        dayX.classList.add("holiday");
       }
       monthDays.appendChild(dayX);
     }
@@ -94,15 +105,19 @@ async function renderCalendar(dateToRender = date) {
       dayX.innerHTML = i;
       monthDays.appendChild(dayX);
 
-      if(holidays.dagar[i - 1]['röd dag'] === "Ja") {
-        dayX.classList.add('holiday');
+      if (holidays.dagar[i - 1]["röd dag"] === "Ja") {
+        dayX.classList.add("holiday");
       }
 
-      dayX.id = new Date(date.getFullYear(), navigateMonth, i).toLocaleDateString();
+      dayX.id = new Date(
+        date.getFullYear(),
+        navigateMonth,
+        i
+      ).toLocaleDateString();
       // 6/6 var inte en röd dag engligt APIt, så det läggs nu in manuellt.
-      if(dayX.id.endsWith('06-06')) {
-        dayX.classList.add('holiday');
-        dayX.classList.add('nationalDay');
+      if (dayX.id.endsWith("06-06")) {
+        dayX.classList.add("holiday");
+        dayX.classList.add("nationalDay");
       }
     }
   }
@@ -113,10 +128,19 @@ async function renderCalendar(dateToRender = date) {
       gridDays++;
       const dayX = document.createElement("div");
       dayX.classList.add("next-date");
+
+      dayX.id = new Date(
+        date.getFullYear(),
+        navigateMonth + 1,
+        y
+      ).toLocaleDateString();
+
       dayX.innerHTML = y;
       monthDays.appendChild(dayX);
     } else break;
   }
+
+  BindCalendarEvents();
 }
 
 // När man klickar vänsterpil så...
@@ -152,12 +176,53 @@ function calendarNext() {
   renderCalendar();
 }
 
-// Highlight on Click
-document.querySelector(".calendar-grid").addEventListener("click", (e) => {
-  const name = "selectedDay";
+// Select&De-select calendar grid days OnClick
+//  Assumes Calendar-grid only contains calendar items, if we do some
+//  cosmetic that breaks this we might need to change this func
+function BindCalendarEvents() {
+  const grid = document.querySelector(".calendar-grid");
 
-  if (e.target.classList.contains("calendar-grid") == false) {
-    if (e.target.classList.contains(name)) e.target.classList.remove(name);
-    else e.target.classList.add(name);
+  for (let i = 0; i < grid.children.length; i++) {
+    grid.children[i].addEventListener("click", (e) => {
+      ToggleSelectedDay(e);
+    });
   }
-});
+}
+
+//TODO, perhaps remove global scope variable if cba?
+let selectedDay;
+let selectedDayId;
+function ToggleSelectedDay(e) {
+  const className = "selectedDay";
+  const targetDay = e.target;
+  const sameDay = targetDay === selectedDay;
+
+  if (selectedDay) {
+    selectedDay.classList.remove(className);
+    selectedDay = undefined;
+    selectedDayId = null;
+  }
+
+  if (!sameDay) {
+    targetDay.classList.add(className);
+    selectedDay = targetDay;
+    selectedDayId = selectedDay.id;
+  }
+
+  renderAllTodo(selectedDayId);
+
+  //addTodoToCalendar();
+  return selectedDayId;
+}
+
+function addTodoToCalendar() {
+  const selectedDay = document.querySelector(".selectedDay");
+
+  for (let index = 0; index < todoItems.length; index++) {
+    if (todoItems[index].date == selectedDay.id) {
+      console.log(todoItems[index]);
+    } else {
+      console.log("There are no todos for this day");
+    }
+  }
+}
