@@ -57,7 +57,7 @@ function renderAllTodo(selectedDate = null) {
   allExistingTodos.forEach((todo) => {
     todo.remove();
   });
-  
+
   if (selectedDate == null) {
     todoItems.forEach((todo) => {
       renderTodo(todo);
@@ -69,6 +69,8 @@ function renderAllTodo(selectedDate = null) {
       }
     });
   }
+
+  counterTodosPerDate();
 }
 
 function renderTodo(todo) {
@@ -146,6 +148,8 @@ function removeTodo(itemContainer, todo) {
   let todoIndex = todoItems.indexOf(todo);
   todoItems.splice(todoIndex, 1);
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
+
+  counterTodosPerDate();
 }
 
 function addTodo(title, description, date = selectedDayId, todoTime) {
@@ -207,6 +211,7 @@ closeFormButton.addEventListener("click", () => {
   closeForm();
 });
 
+// Move into Form.js or something?
 function closeForm() {
   document.querySelector(".form-popup").style.display = "none";
   const fadeDiv = document.querySelector(".modal-fade");
@@ -226,6 +231,7 @@ function openForm(todo = null) {
   const form = doc.firstChild.nextSibling;
   const elements = form.elements;
 
+  // is Add
   if (todo == null) {
     submitFormButton.innerHTML = "Submit";
 

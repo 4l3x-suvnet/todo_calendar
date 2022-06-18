@@ -9,7 +9,6 @@ async function main() {
   getAndRefreshCalendarDate();
   setDataTheme("dark-mode"); // TODO: Load theme from localstorage, initial theme should be dark-mode
   await renderCalendar();
-  counterTodosPerDate();
 }
 
 function getAndRefreshCalendarDate() {
@@ -142,6 +141,7 @@ async function renderCalendar(dateToRender = date) {
   }
 
   BindCalendarEvents();
+  counterTodosPerDate();
 }
 
 // När man klickar vänsterpil så...
@@ -159,6 +159,7 @@ function calendarPrev() {
     console.log(navigateMonth);
   }
   renderCalendar();
+  renderAllTodo();
 }
 
 // När man klickar högerpil så...
@@ -175,6 +176,7 @@ function calendarNext() {
     console.log(navigateMonth);
   }
   renderCalendar();
+  renderAllTodo();
 }
 
 // Select&De-select calendar grid days OnClick
@@ -216,35 +218,40 @@ function ToggleSelectedDay(e) {
   return selectedDayId;
 }
 
-function addTodoToCalendar() {
-  const selectedDay = document.querySelector(".selectedDay");
+// function addTodoToCalendar() {
+//   const selectedDay = document.querySelector(".selectedDay");
 
-  for (let index = 0; index < todoItems.length; index++) {
-    if (todoItems[index].date == selectedDay.id) {
-      //console.log(todoItems[index]);
-    } else {
-      console.log("There are no todos for this day");
-    }
-  }
-}
+//   console.log("hi ");
+
+//   for (let index = 0; index < todoItems.length; index++) {
+//     if (todoItems[index].date == selectedDay.id) {
+//       //console.log(todoItems[index]);
+//     } else {
+//       console.log("There are no todos for this day");
+//     }
+//   }
+// }
 
 function counterTodosPerDate() {
-
   const grid = document.querySelector(".calendar-grid");
   let counter = 0;
-  
+
+  preExistingTodoCounters = document.querySelectorAll(".todo-counter");
+  preExistingTodoCounters.forEach((item) => {
+    item.remove();
+  });
+
   for (let i = 0; i < grid.children.length; i++) {
-    const numberOfTodos = document.createElement('div');
-    numberOfTodos.classList.add('todo-counter');
+    const numberOfTodos = document.createElement("div");
+    numberOfTodos.classList.add("todo-counter");
     for (let index = 0; index < todoItems.length; index++) {
-      if(grid.children[i].id === todoItems[index].date)
-      {
+      if (grid.children[i].id === todoItems[index].date) {
         counter++;
         grid.children[i].append(numberOfTodos);
       }
       numberOfTodos.innerHTML = counter;
     }
     counter = 0;
-    console.log(counter)
+    //console.log(counter)
   }
 }
