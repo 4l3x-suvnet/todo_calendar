@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 const openFormButton = document.querySelector(".add");
 const closeFormButton = document.querySelector(".closeTodoForm");
+
 const toDoForm = document.querySelector("#todo-form");
 
 let todoItems = JSON.parse(localStorage.getItem("todoItems"));
@@ -28,6 +29,22 @@ function handleFormSubmit(e) {
   const formProps = Object.fromEntries(formData);
 
   addTodo(
+    formProps.title,
+    formProps.description,
+    formProps.date,
+    formProps.time
+  );
+}
+
+let alterId = null;
+function handleEditFormSubmit(e) {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const formProps = Object.fromEntries(formData);
+
+  alterTodo(
+    alterId,
     formProps.title,
     formProps.description,
     formProps.date,
@@ -91,7 +108,7 @@ function renderTodo(todo) {
   const editButton = document.createElement("i");
   editButton.classList.add("far");
   editButton.classList.add("fa-edit");
-  //TODO editButton.addEventListener("click", () => editTodo(itemContainer, todo));
+  editButton.addEventListener("click", () => editTodo(todo));
 
   const doneButton = document.createElement("i");
   doneButton.classList.add("fa-solid");
@@ -141,15 +158,32 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
   };
   idCounter++;
   todoItems.push(todo);
+
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
-
-  // sort based on date first then time
   sortTodoList();
-
   renderAllTodo(selectedDayId);
-  //renderTodo(todo);
-  //console.log(todo); //Just during development phase
+
   closeForm();
+}
+
+function alterTodo(id, title, description, date, todoTime) {
+  const itemToChange = todoItems.find((x) => x.id === id);
+
+  itemToChange.title = title;
+  itemToChange.description = description;
+  itemToChange.date = date;
+  itemToChange.todoTime = todoTime;
+
+  window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
+  sortTodoList();
+  renderAllTodo(selectedDayId);
+
+  closeForm();
+}
+
+//TODO perhaps remove
+function editTodo(todo) {
+  openForm(todo);
 }
 
 // i swear prettier is inting
@@ -179,8 +213,9 @@ function closeForm() {
   fadeDiv.remove();
 }
 
-function openForm() {
-  var doc = document.querySelector(".form-popup");
+function openForm(todo = null) {
+  const submitFormButton = document.querySelector(".submitTodo");
+  const doc = document.querySelector(".form-popup");
   doc.style.display = "block";
 
   const main = document.querySelector(".calendar");
@@ -188,9 +223,29 @@ function openForm() {
   fadeDiv.classList.add("modal-fade");
   main.append(fadeDiv);
 
-  // Find Date element
-  var form = doc.firstChild.nextSibling;
-  var elements = form.elements;
-  var date = elements["date"];
-  date.value = selectedDayId;
+  const form = doc.firstChild.nextSibling;
+  const elements = form.elements;
+
+  if (todo == null) {
+    submitFormButton.innerHTML = "Submit";
+
+    elements["date"].value = selectedDayId;
+    elements["time"].value = null;
+    elements["title"].value = null;
+    elements["description"].value = null;
+
+    toDoForm.onsubmit = handleFormSubmit;
+  }
+  // is Edit
+  else {
+    submitFormButton.innerHTML = "Edit";
+    // Set values to prev values
+    elements["date"].value = todo.date;
+    elements["time"].value = todo.todoTime;
+    elements["title"].value = todo.title;
+    elements["description"].value = todo.description;
+    alterId = todo.id;
+
+    toDoForm.onsubmit = handleEditFormSubmit;
+  }
 }
