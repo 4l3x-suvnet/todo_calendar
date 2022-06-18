@@ -1,7 +1,6 @@
 .content-container, .form-popup {
   display: grid;
   grid-template-columns: 2fr 4.5fr;
-  background: #1b1b20;
   border-radius: 20px;
   max-width: 80rem;
   margin: 0 auto;
@@ -42,15 +41,6 @@
   height: 7em;
 }
 
-.calendar-grid div:hover {
-  background-color: lightgray;
-}
-
-.selectedDay {
-  background-color: #3d3d4a;
-  color: #1b1b20 !important;
-}
-
 .weekdays, .calendar-grid {
   text-align: center;
   margin-bottom: 15px;
@@ -67,10 +57,6 @@
   justify-content: start;
 }
 
-.today {
-  background-color: #313146e8;
-}
-
 .aside-header h1,
 h2 {
   text-align: center;
@@ -82,14 +68,7 @@ h2 {
   margin-top: 1rem;
 }
 
-.prev-date,
-.next-date {
-  color: #9d9d9d;
-}
 
-.holiday {
-  color: red;
-}
 
 .nationalDay {
   background-image: url('https://cdn.countryflags.com/thumbs/sweden/flag-400.png');
@@ -112,7 +91,6 @@ form label, form h1 {
 }
 
 aside {
-  border-right: 2px solid #3d3d4a;
   padding: 20px;
   height: 90vh;
   border-radius: 20px 0px 0px 20px;
@@ -130,7 +108,6 @@ aside {
 }
 
 button {
-  background-color: #3d3d4a;
   border-radius: 10px;
   border: 0;
   cursor: pointer;
@@ -173,7 +150,6 @@ button {
 
 .todo-date-container {
   border-radius: 10px;
-  background: #3d3d4a;
   padding: 10px;
 }
 
@@ -201,24 +177,24 @@ button {
   margin: 0 auto;
 }
 
-h1, button, .aside-content-container, .calendar-grid div:hover, .selectedDay {
-  color: lightgray;
-}
 
 input {
-  background-color: #303245;
   border-radius: 8px;
   border: 0;
   box-sizing: border-box;
-  color: #eee;
   font-size: 16px;
   height: 100%;
   outline: 0;
   padding: 8px 20px 8px;
 }
 
+
 button, input, .todo-date-container {
-  box-shadow: 2px 4px rgba(0,0,0,.25);
+  box-shadow: 2px 4px rgba(0,0,0,.75);
+}
+
+input {
+  box-shadow: 2px 4px rgba(0,0,0,.5);
 }
 
  /* Hide scrollbar for Chrome, Safari and Opera */
@@ -232,9 +208,6 @@ button, input, .todo-date-container {
 
 .calendar-grid div {
   border-radius: 10px;
-}
-.calendar-grid div:hover {
-  background-color: #3d3d4a !important;
 }
 
 .calendar-grid, .weekdays {
@@ -255,7 +228,6 @@ button, input, .todo-date-container {
   width: 450px;
   border-radius: 10px;
   padding: 15px;
-  background: #3d3d4a;
   position: fixed;
   z-index: 100;
 
@@ -267,7 +239,6 @@ button, input, .todo-date-container {
 }
 
 .form-popup h1 {
-  color: whitesmoke;
   display: flex;
 }
 
@@ -275,11 +246,7 @@ button, input, .todo-date-container {
   position: fixed;
   top: 2%;
   right: 2%;
-  background-color: rgb(61, 61, 74);
-}
-
-button:hover {
-  background-color: rgb(80, 80, 92);
+  /* background-color: rgb(61, 61, 74); */
 }
 
 .submitTodo {
@@ -305,4 +272,87 @@ button:hover {
   bottom: 0;
   top: 0;
   background-color: rgba(0,0,0,0.4);  
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: whitesmoke;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: whitesmoke;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.header-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-items input + .slider {
+  box-shadow: 0 0 1px #3D3D4A;
+}
+
+.header-items input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
