@@ -66,9 +66,9 @@ async function renderCalendar(dateToRender = date) {
     dayX.classList.add("prev-date");
 
     dayX.id = new Date(
-    date.getFullYear(),
-    navigateMonth - 1,
-    prevLastDay - x + 1
+      date.getFullYear(),
+      navigateMonth - 1,
+      prevLastDay - x + 1
     ).toLocaleDateString();
 
     dayX.innerHTML = prevLastDay - x + 1;
@@ -129,9 +129,9 @@ async function renderCalendar(dateToRender = date) {
       dayX.classList.add("next-date");
 
       dayX.id = new Date(
-      date.getFullYear(),
-      navigateMonth + 1,
-      y
+        date.getFullYear(),
+        navigateMonth + 1,
+        y
       ).toLocaleDateString();
 
       dayX.innerHTML = y;
@@ -195,7 +195,7 @@ document.querySelector(".calendar-grid").addEventListener("click", (e) => {
 
   renderAllTodo(selectedDayId);
 
- //addTodoToCalendar();
+  //addTodoToCalendar();
   return selectedDayId;
 });
 
@@ -204,7 +204,7 @@ function addTodoToCalendar() {
 
   for (let index = 0; index < todoItems.length; index++) {
     if (todoItems[index].date == selectedDay.id) {
-      console.log(todoItems[index]);
+      //console.log(todoItems[index]);
     } else {
       console.log("There are no todos for this day");
     }

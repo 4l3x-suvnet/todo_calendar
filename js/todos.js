@@ -10,12 +10,12 @@ if (!todoItems) {
 }
 
 function main() {
-  console.log(todoItems);
   bindEventHandlers();
   renderAllTodo();
 }
 
-let idCounter = todoItems.length == 0 ? 0 : todoItems[todoItems.length - 1].id + 1;
+let idCounter =
+  todoItems.length == 0 ? 0 : todoItems[todoItems.length - 1].id + 1;
 
 function bindEventHandlers() {
   toDoForm.onsubmit = handleFormSubmit;
@@ -27,36 +27,35 @@ function handleFormSubmit(e) {
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
 
-  addTodo(formProps.title, formProps.description, formProps.date, formProps.time);
+  addTodo(
+    formProps.title,
+    formProps.description,
+    formProps.date,
+    formProps.time
+  );
 }
 
 function renderAllTodo(selectedDate = null) {
-
   const allExistingTodos = document.querySelectorAll(".todo-date-container");
-  allExistingTodos.forEach(todo => {
+  allExistingTodos.forEach((todo) => {
     todo.remove();
   });
 
-  if(selectedDate == null) {
-    todoItems.forEach(todo => {
-      renderTodo(todo)
+  if (selectedDate == null) {
+    todoItems.forEach((todo) => {
+      renderTodo(todo);
     });
-  }
-  else {
-    todoItems.forEach(todo => {
-    if(todo.date === selectedDate) {
-      renderTodo(todo)
-    }  
+  } else {
+    todoItems.forEach((todo) => {
+      if (todo.date === selectedDate) {
+        renderTodo(todo);
+      }
     });
   }
 }
 
 function renderTodo(todo) {
   const list = document.querySelector(".todo-list");
-
-  console.log("todo");
-  console.log(todo);
-
 
   // Create the <div class = todo-date-container>
   const itemContainer = document.createElement("div");
@@ -108,7 +107,7 @@ function renderTodo(todo) {
   actionsContainer.append(doneButton);
   actionsContainer.append(removeButton);
 
-  //Add actions to subcontainer 
+  //Add actions to subcontainer
   detailsSubContainer.append(actionsContainer);
 
   // Create Description
@@ -137,15 +136,33 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
     title,
     description,
     id: idCounter,
-    date, 
-    todoTime 
+    date,
+    todoTime,
   };
   idCounter++;
   todoItems.push(todo);
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
-  renderTodo(todo);
-  console.log(todo); //Just during development phase
+
+  // sort based on date first then time
+  sortTodoList();
+
+  renderAllTodo(selectedDayId);
+  //renderTodo(todo);
+  //console.log(todo); //Just during development phase
   closeForm();
+}
+
+// i swear prettier is inting
+function sortTodoList() {
+  todoItems.sort((a, b) =>
+    a.date > b.date
+      ? 1
+      : a.date === b.date
+      ? a.todoTime > b.todoTime
+        ? 1
+        : -1
+      : -1
+  );
 }
 
 openFormButton.addEventListener("click", () => {
@@ -163,15 +180,14 @@ function closeForm() {
 }
 
 function openForm() {
-
   var doc = document.querySelector(".form-popup");
   doc.style.display = "block";
-  
+
   const main = document.querySelector(".calendar");
-  const fadeDiv = document.createElement('div');
+  const fadeDiv = document.createElement("div");
   fadeDiv.classList.add("modal-fade");
   main.append(fadeDiv);
-  
+
   // Find Date element
   var form = doc.firstChild.nextSibling;
   var elements = form.elements;
