@@ -10,6 +10,7 @@ if (!todoItems) {
 }
 
 function main() {
+  console.log(todoItems);
   bindEventHandlers();
   renderAllTodo();
 }
@@ -29,10 +30,25 @@ function handleFormSubmit(e) {
   addTodo(formProps.title, formProps.description, formProps.date, formProps.time);
 }
 
-function renderAllTodo() {
-  todoItems.forEach(todo => {
-    renderTodo(todo)
+function renderAllTodo(selectedDate = null) {
+
+  const allExistingTodos = document.querySelectorAll(".todo-date-container");
+  allExistingTodos.forEach(todo => {
+    todo.remove();
   });
+
+  if(selectedDate == null) {
+    todoItems.forEach(todo => {
+      renderTodo(todo)
+    });
+  }
+  else {
+    todoItems.forEach(todo => {
+    if(todo.date === selectedDate) {
+      renderTodo(todo)
+    }  
+    });
+  }
 }
 
 function renderTodo(todo) {
