@@ -149,7 +149,6 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
 }
 
 openFormButton.addEventListener("click", () => {
-  console.log("aaaa");
   openForm();
 });
 
