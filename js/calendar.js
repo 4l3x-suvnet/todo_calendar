@@ -219,7 +219,7 @@ function addTodoToCalendar() {
 
   for (let index = 0; index < todoItems.length; index++) {
     if (todoItems[index].date == selectedDay.id) {
-      console.log(todoItems[index]);
+      //console.log(todoItems[index]);
     } else {
       console.log("There are no todos for this day");
     }
