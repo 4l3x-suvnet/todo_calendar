@@ -13,14 +13,11 @@
     }
 
     aside {
-        padding: 10px;
-        padding-bottom: 0px;
-        height: 82vh;
+        min-height: 95vh;
     }
 
     body {
         padding: 10px;
-        font-size: smaller;
     }
     
     label {
@@ -29,6 +26,6 @@
 
     input {
         height: 35px;
-        /* width: 100%; */
     }
-}
+
+    }

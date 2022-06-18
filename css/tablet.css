@@ -1,0 +1,35 @@
+@media only screen and (max-width: 801px) {
+    aside {
+        height: 100%;
+        padding-bottom: 2rem;
+        mask-image:none
+    }
+
+    main {
+        border: none !important;
+    }
+
+    .content-container {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-grid div {
+        height: 3em;
+    }
+
+    .form-popup {
+        max-height: 90vh;
+        overflow: scroll;
+        font-size: xx-small;
+    }
+
+    form h1 {
+        margin-top: .1rem;
+    }
+
+    .submitTodo {
+        height: 40px;
+        bottom: 3%;
+    }
+
+}
