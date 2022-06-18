@@ -185,14 +185,18 @@ document.querySelector(".calendar-grid").addEventListener("click", (e) => {
   if (selectedDay) {
     selectedDay.classList.remove(className);
     selectedDay = undefined;
+    selectedDayId = null;
   }
 
   if (!sameDay) {
     targetDay.classList.add(className);
     selectedDay = targetDay;
+    selectedDayId = selectedDay.id;
   }
-  selectedDayId = selectedDay.id;
-  addTodoToCalendar();
+
+  renderAllTodo(selectedDayId);
+
+ //addTodoToCalendar();
   return selectedDayId;
 });
 
