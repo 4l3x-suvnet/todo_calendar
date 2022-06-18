@@ -144,8 +144,6 @@ button {
 
 .todo-list {
   margin-top: 1rem;
-  gap: 2rem;
-  display: grid;
 }
 
 .todo-date-container {
