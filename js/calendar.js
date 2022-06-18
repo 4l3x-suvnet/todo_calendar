@@ -7,7 +7,6 @@ let navigateMonth = date.getMonth();
 
 async function main() {
   getAndRefreshCalendarDate();
-  setDataTheme("dark-mode"); // TODO: Load theme from localstorage, initial theme should be dark-mode
   await renderCalendar();
 }
 
@@ -220,7 +219,7 @@ function addTodoToCalendar() {
 
   for (let index = 0; index < todoItems.length; index++) {
     if (todoItems[index].date == selectedDay.id) {
-      console.log(todoItems[index]);
+      //console.log(todoItems[index]);
     } else {
       console.log("There are no todos for this day");
     }
