@@ -11,7 +11,7 @@ function renderDay() {
   const asidedateItem = document.querySelector(".aside-header");
 
   const dateText =
-    date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
   const hours = date.getHours();
   const minutes = date.getMinutes();
