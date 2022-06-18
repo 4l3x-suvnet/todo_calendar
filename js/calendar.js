@@ -91,7 +91,7 @@ async function renderCalendar(dateToRender = date) {
         i
       ).toLocaleDateString();
       dayX.innerHTML = i;
-      if (holidays.dagar[i]["röd dag"] === "Ja") {
+      if (holidays.dagar[i - 1]["röd dag"] === "Ja") {
         dayX.classList.add("holiday");
       }
       monthDays.appendChild(dayX);
