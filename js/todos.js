@@ -54,7 +54,7 @@ function handleEditFormSubmit(e) {
 
 function renderAllTodo(selectedDate = null) {
   sortTodoList();
-  
+
   const allExistingTodos = document.querySelectorAll(".todo-date-container");
   allExistingTodos.forEach((todo) => {
     todo.remove();
@@ -240,7 +240,7 @@ function openForm(todo = null) {
   }
   // is Edit
   else {
-    submitFormButton.innerHTML = "Edit";
+    submitFormButton.innerHTML = "Save";
     // Set values to prev values
     elements["date"].value = todo.date;
     elements["time"].value = todo.todoTime;
