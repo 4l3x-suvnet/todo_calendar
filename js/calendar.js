@@ -66,9 +66,9 @@ async function renderCalendar(dateToRender = date) {
     dayX.classList.add("prev-date");
 
     dayX.id = new Date(
-    date.getFullYear(),
-    navigateMonth - 1,
-    prevLastDay - x + 1
+      date.getFullYear(),
+      navigateMonth - 1,
+      prevLastDay - x + 1
     ).toLocaleDateString();
 
     dayX.innerHTML = prevLastDay - x + 1;
@@ -129,15 +129,17 @@ async function renderCalendar(dateToRender = date) {
       dayX.classList.add("next-date");
 
       dayX.id = new Date(
-      date.getFullYear(),
-      navigateMonth + 1,
-      y
+        date.getFullYear(),
+        navigateMonth + 1,
+        y
       ).toLocaleDateString();
 
       dayX.innerHTML = y;
       monthDays.appendChild(dayX);
     } else break;
   }
+
+  BindCalendarEvents();
 }
 
 // När man klickar vänsterpil så...
@@ -174,9 +176,22 @@ function calendarNext() {
 }
 
 // Select&De-select calendar grid days OnClick
+//  Assumes Calendar-grid only contains calendar items, if we do some
+//  cosmetic that breaks this we might need to change this func
+function BindCalendarEvents() {
+  const grid = document.querySelector(".calendar-grid");
+
+  for (let i = 0; i < grid.children.length; i++) {
+    grid.children[i].addEventListener("click", (e) => {
+      ToggleSelectedDay(e);
+    });
+  }
+}
+
+//TODO, perhaps remove global scope variable if cba?
 let selectedDay;
 let selectedDayId;
-document.querySelector(".calendar-grid").addEventListener("click", (e) => {
+function ToggleSelectedDay(e) {
   const className = "selectedDay";
   const targetDay = e.target;
   const sameDay = targetDay === selectedDay;
@@ -195,9 +210,9 @@ document.querySelector(".calendar-grid").addEventListener("click", (e) => {
 
   renderAllTodo(selectedDayId);
 
- //addTodoToCalendar();
+  //addTodoToCalendar();
   return selectedDayId;
-});
+}
 
 function addTodoToCalendar() {
   const selectedDay = document.querySelector(".selectedDay");
