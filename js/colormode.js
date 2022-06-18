@@ -1,6 +1,4 @@
-// Sets default theme
 // TODO: Save theme to localstorage
-setDataTheme("dark-mode");
 
 document.querySelector("#colorMode").addEventListener('click', () => {
     
