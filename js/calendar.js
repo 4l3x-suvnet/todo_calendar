@@ -9,6 +9,7 @@ async function main() {
   getAndRefreshCalendarDate();
   setDataTheme("dark-mode"); // TODO: Load theme from localstorage, initial theme should be dark-mode
   await renderCalendar();
+  counterTodosPerDate();
 }
 
 function getAndRefreshCalendarDate() {
@@ -224,5 +225,26 @@ function addTodoToCalendar() {
     } else {
       console.log("There are no todos for this day");
     }
+  }
+}
+
+function counterTodosPerDate() {
+
+  const grid = document.querySelector(".calendar-grid");
+  let counter = 0;
+  
+  for (let i = 0; i < grid.children.length; i++) {
+    const numberOfTodos = document.createElement('div');
+    numberOfTodos.classList.add('todo-counter');
+    for (let index = 0; index < todoItems.length; index++) {
+      if(grid.children[i].id === todoItems[index].date)
+      {
+        counter++;
+        grid.children[i].append(numberOfTodos);
+      }
+      numberOfTodos.innerHTML = counter;
+    }
+    counter = 0;
+    console.log(counter)
   }
 }

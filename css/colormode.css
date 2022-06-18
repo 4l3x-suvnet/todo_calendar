@@ -40,7 +40,7 @@ input {
     background-color: var(--background-color);
 }
 
-body, button, .calendar-grid div:hover, .selectedDay, .todo-date-container, .header-items input:checked + .slider, .slider {
+body, button, .calendar-grid div:hover, .selectedDay, .todo-date-container, .header-items input:checked + .slider, .slider, .todo-counter {
     background-color: var(--background-color-variant);
   }
 
@@ -48,7 +48,7 @@ button:hover {
     background-color: var(--background-color-second-variant);
 }
 
-body, button, input {
+body, button, input, .todo-counter {
     color: var(--text-color);
 }
 
