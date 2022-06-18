@@ -9,7 +9,8 @@ html[data-theme = "light-mode"] {
     
     --text-color: rgb(0, 0, 0);
     --text-color-select: #2d3b2b;
-    --text-color-variant: #8b8b8b;
+    --text-color-variant: #dfdfdf;
+    --text-color-placeholder: #1e2e22;
 }
 
 html[data-theme = "dark-mode"] {
@@ -24,6 +25,7 @@ html[data-theme = "dark-mode"] {
     --text-color: whitesmoke;
     --text-color-select: #1b1b20;
     --text-color-variant: #9d9d9d;
+    --text-color-placeholder: #bebebe;
 }
 
 .form-popup {   
@@ -68,4 +70,9 @@ body, button, input {
 
 main {
     border-left: 2px solid var(--background-color-variant);
+}
+
+::placeholder {
+    opacity: 1;
+    color: var(--text-color-placeholder);
 }

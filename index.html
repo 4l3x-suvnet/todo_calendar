@@ -7,9 +7,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FantastiCal</title>
-    <link rel="stylesheet" href="css/desktop.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/desktop.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/colormode.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +27,28 @@
 
 <body>
     <div class="content-container">
+        <div class="form-popup">
+            <form class="form-container" id="todo-form">
+                <h1>TODO</h1>
+        
+                <label for="TodoTitle"><b>Title</b></label>
+                <input type="text" placeholder="Enter Title" name="title" required>
+        
+                <label for="date"><b>Date</b></label>
+                <input type="date" placeholder="Enter Date" name="date" required>
+
+                <label for="time"><b>Time</b></label>
+                <input type="time" placeholder="Enter Time" name="time" >
+
+                <label for="desc"><b>Description</b></label>
+                <input type="text" placeholder="Enter Description" name="description">
+        
+                <div class="addtodo-button-container">
+                    <button type="submit" class="submitTodo">Submit</button>
+                    <button type="button" class="closeTodoForm">Close</button>
+                </div>
+            </form>
+        </div>
         <aside>
             <header>
             <div class="header-items">
@@ -85,28 +108,7 @@
         </aside>
 
         <main class="calendar">
-            <div class="form-popup">
-                <form class="form-container" id="todo-form">
-                    <h1>TODO</h1>
-            
-                    <label for="TodoTitle"><b>Title</b></label>
-                    <input type="text" placeholder="Enter Title" name="title" required>
-            
-                    <label for="date"><b>Date</b></label>
-                    <input type="date" placeholder="Enter Date" name="date" required>
 
-                    <label for="time"><b>Time</b></label>
-                    <input type="time" placeholder="Enter Time" name="time" >
-
-                    <label for="desc"><b>Description</b></label>
-                    <input type="text" placeholder="Enter Description" name="description">
-            
-                    <div class="addtodo-button-container">
-                        <button type="submit" class="submitTodo">Submit</button>
-                        <button type="button" class="closeTodoForm">Close</button>
-                    </div>
-                </form>
-            </div>
             <div class="month">
                 <i class="fa-solid fa-arrow-left prev"></i>
                 <div>

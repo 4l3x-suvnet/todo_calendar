@@ -144,8 +144,9 @@ button {
 
 .todo-list {
   margin-top: 1rem;
-  gap: 2rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .todo-date-container {
@@ -183,7 +184,6 @@ input {
   border: 0;
   box-sizing: border-box;
   font-size: 16px;
-  height: 100%;
   outline: 0;
   padding: 8px 20px 8px;
 }
@@ -224,8 +224,8 @@ input {
 
 .form-popup {
   display: none;
-  height: 520px;
-  width: 450px;
+  height: 35rem;
+  width: 25rem;
   border-radius: 10px;
   padding: 15px;
   position: fixed;
