@@ -1,10 +1,34 @@
 @media only screen and (max-width: 475px) {
+    * {
+        font-size: small !important;
+    }
+
     .calendar {
         display: none;
     }
+
     .content-container {
-        display: grid;
         grid-template-columns: 1fr;
-        padding: 0 2rem;
-      }
-  }
+        padding: 0;
+    }
+
+    aside {
+        padding: 10px;
+        padding-bottom: 0px;
+        height: 82vh;
+    }
+
+    body {
+        padding: 10px;
+        font-size: smaller;
+    }
+    
+    label {
+        padding-top: 1rem;
+    }
+
+    input {
+        height: 35px;
+        /* width: 100%; */
+    }
+}

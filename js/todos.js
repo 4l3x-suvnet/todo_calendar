@@ -218,7 +218,7 @@ function openForm(todo = null) {
   const doc = document.querySelector(".form-popup");
   doc.style.display = "block";
 
-  const main = document.querySelector(".calendar");
+  const main = document.querySelector(".content-container");
   const fadeDiv = document.createElement("div");
   fadeDiv.classList.add("modal-fade");
   main.append(fadeDiv);
