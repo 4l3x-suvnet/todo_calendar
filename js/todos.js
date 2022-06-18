@@ -53,11 +53,13 @@ function handleEditFormSubmit(e) {
 }
 
 function renderAllTodo(selectedDate = null) {
+  sortTodoList();
+  
   const allExistingTodos = document.querySelectorAll(".todo-date-container");
   allExistingTodos.forEach((todo) => {
     todo.remove();
   });
-
+  
   if (selectedDate == null) {
     todoItems.forEach((todo) => {
       renderTodo(todo);
