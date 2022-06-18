@@ -26,14 +26,6 @@ html[data-theme = "dark-mode"] {
     --text-color-variant: #9d9d9d;
 }
 
-.form-popup {   
-    background-color: var(--background-color-popup-variant);
-}
-
-input {
-    background-color: var(--background-color-input-variant)
-}
-
 .content-container {   
     background-color: var(--background-color);
 }
@@ -68,4 +60,15 @@ body, button, input {
 
 main {
     border-left: 2px solid var(--background-color-variant);
+}
+
+.slider:before {
+    background-color: var(--text-color);
+}
+.form-popup {   
+    background-color: var(--background-color-popup-variant);
+}
+
+input {
+    background-color: var(--background-color-input-variant)
 }

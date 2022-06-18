@@ -328,7 +328,6 @@ input {
   width: 16px;
   left: 4px;
   bottom: 4px;
-  background-color: whitesmoke;
   -webkit-transition: .2s;
   transition: .2s;
 }
