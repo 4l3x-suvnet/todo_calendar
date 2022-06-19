@@ -372,4 +372,36 @@ aside::-webkit-scrollbar {
   border-radius: 50% !important;
   position: absolute !important;
   width: fit-content !important;
+  cursor: pointer;
+}
+
+/* below still needs a bit cleaning up */
+.todo-item-small-container {
+  display: none !important;
+  opacity: 0;
+}
+
+.todo-counter:hover + .todo-item-small-container {
+  transition: opacity 1s ease all;
+  opacity: 1;
+  background: #3D3D4A;
+  width: max-content;
+  position: absolute;
+  top: 15%;
+  flex-direction: column;
+  z-index: 2;
+  display: flex !important;
+  display: inline-block !important;
+  left: 95%;
+  height: auto;
+  border: 1px solid #292932;
+}
+
+.todo-item-small {
+  text-align: left;
+  font-size: 14px;
+  height: auto !important;
+  width: 100% !important;
+  padding: 15px 10px;
+  justify-content: start !important;
 }

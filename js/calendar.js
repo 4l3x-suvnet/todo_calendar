@@ -244,14 +244,26 @@ function counterTodosPerDate() {
   for (let i = 0; i < grid.children.length; i++) {
     const numberOfTodos = document.createElement("div");
     numberOfTodos.classList.add("todo-counter");
+    
+    const smallTodoItemContainer = document.createElement("div");
+    smallTodoItemContainer.classList.add("todo-item-small-container");
+
     for (let index = 0; index < todoItems.length; index++) {
       if (grid.children[i].id === todoItems[index].date) {
+        
         counter++;
+
+        const smallTodoItemContent = document.createElement("div");
+        smallTodoItemContent.classList.add("todo-item-small");
+
         grid.children[i].append(numberOfTodos);
+        grid.children[i].append(smallTodoItemContainer);
+        
+        smallTodoItemContainer.append(smallTodoItemContent);
+        smallTodoItemContent.innerHTML = todoItems[index].todoTime + ' - ' + todoItems[index].title;
       }
       numberOfTodos.innerHTML = counter;
     }
     counter = 0;
-    //console.log(counter)
   }
 }
