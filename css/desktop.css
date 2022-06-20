@@ -1,10 +1,11 @@
-.content-container, .form-popup {
+.content-container,
+.form-popup {
   display: grid;
   grid-template-columns: 2fr 4.5fr;
   border-radius: 20px;
   max-width: 80rem;
   margin: 0 auto;
-  box-shadow: 8px 8px rgba(27, 27, 32, .3);
+  box-shadow: 8px 8px rgba(27, 27, 32, 0.3);
 }
 
 .month {
@@ -27,7 +28,6 @@
   align-items: center;
 }
 
-
 .calendar-grid {
   display: flex;
   width: 100%;
@@ -41,14 +41,15 @@
   height: 7em;
 }
 
-.weekdays, .calendar-grid {
+.weekdays,
+.calendar-grid {
   text-align: center;
   margin-bottom: 15px;
 }
 
 .weekdays div,
 .calendar-grid div {
-  width: calc(100% / 7 - .2rem);
+  width: calc(100% / 7 - 0.2rem);
 }
 
 .weather {
@@ -68,14 +69,11 @@ h2 {
   margin-top: 1rem;
 }
 
-
-
 .nationalDay {
-  background-image: url('https://cdn.countryflags.com/thumbs/sweden/flag-400.png');
+  background-image: url("https://cdn.countryflags.com/thumbs/sweden/flag-400.png");
   background-size: 20%;
   background-repeat: no-repeat;
 }
-
 
 .aside-content-container {
   color: lightgray;
@@ -85,9 +83,10 @@ form {
   display: grid;
 }
 
-form label, form h1 {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+form label,
+form h1 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 aside {
@@ -117,7 +116,7 @@ button {
   margin-top: 1rem;
   padding: 10px 20px;
   text-transform: uppercase;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   width: fit-content;
 }
 
@@ -132,6 +131,8 @@ button {
 .todo-title {
   font-weight: bolder;
   font-size: 20px;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .todo-desc {
@@ -147,7 +148,7 @@ button {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .todo-date-container {
@@ -157,7 +158,7 @@ button {
 
 .todo-actions {
   font-size: 16px;
-  gap: .75rem;
+  gap: 0.75rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -167,8 +168,10 @@ button {
   justify-content: space-between;
 }
 
-.todo-date, .todo-subcontainer, .todo-desc {
-  margin-bottom: .5rem;
+.todo-date,
+.todo-subcontainer,
+.todo-desc {
+  margin-bottom: 0.5rem;
   align-items: center;
 }
 
@@ -179,7 +182,6 @@ button {
   margin: 0 auto;
 }
 
-
 input {
   border-radius: 8px;
   border: 0;
@@ -189,13 +191,14 @@ input {
   padding: 8px 20px 8px;
 }
 
-
-button, input, .todo-date-container {
-  box-shadow: 2px 4px rgba(0, 0, 0, .75);
+button,
+input,
+.todo-date-container {
+  box-shadow: 2px 4px rgba(0, 0, 0, 0.75);
 }
 
 input {
-  box-shadow: 2px 4px rgba(0, 0, 0, .5);
+  box-shadow: 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -211,8 +214,9 @@ aside::-webkit-scrollbar {
   border-radius: 10px;
 }
 
-.calendar-grid, .weekdays {
-  gap: .2rem;
+.calendar-grid,
+.weekdays {
+  gap: 0.2rem;
 }
 
 .todo-container {
@@ -282,8 +286,8 @@ aside::-webkit-scrollbar {
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .slider:before {
@@ -294,8 +298,8 @@ aside::-webkit-scrollbar {
   left: 4px;
   bottom: 4px;
   background-color: whitesmoke;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .switch {
@@ -318,8 +322,8 @@ aside::-webkit-scrollbar {
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .slider:before {
@@ -330,8 +334,8 @@ aside::-webkit-scrollbar {
   left: 4px;
   bottom: 4px;
   background-color: whitesmoke;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .header-items {
@@ -340,11 +344,11 @@ aside::-webkit-scrollbar {
   align-items: center;
 }
 
-.header-items input+.slider {
-  box-shadow: 0 0 1px #3D3D4A;
+.header-items input + .slider {
+  box-shadow: 0 0 1px #3d3d4a;
 }
 
-.header-items input:checked+.slider:before {
+.header-items input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -384,7 +388,7 @@ aside::-webkit-scrollbar {
 .todo-counter:hover + .todo-item-small-container {
   transition: opacity 1s ease all;
   opacity: 1;
-  background: #3D3D4A;
+  background: #3d3d4a;
   width: max-content;
   position: absolute;
   top: 15%;
