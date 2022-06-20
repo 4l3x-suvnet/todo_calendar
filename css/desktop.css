@@ -183,7 +183,12 @@ button {
   margin: 0 auto;
 }
 
-input {
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+input, textarea {
   border-radius: 8px;
   border: 0;
   box-sizing: border-box;
@@ -194,13 +199,10 @@ input {
 
 button,
 input,
-.todo-date-container {
+.todo-date-container, textarea {
   box-shadow: 2px 4px rgba(0, 0, 0, 0.75);
 }
 
-input {
-  box-shadow: 2px 4px rgba(0, 0, 0, 0.5);
-}
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 aside::-webkit-scrollbar {
