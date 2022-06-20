@@ -218,20 +218,6 @@ function ToggleSelectedDay(e) {
   return selectedDayId;
 }
 
-// function addTodoToCalendar() {
-//   const selectedDay = document.querySelector(".selectedDay");
-
-//   console.log("hi ");
-
-//   for (let index = 0; index < todoItems.length; index++) {
-//     if (todoItems[index].date == selectedDay.id) {
-//       //console.log(todoItems[index]);
-//     } else {
-//       console.log("There are no todos for this day");
-//     }
-//   }
-// }
-
 function counterTodosPerDate() {
   const grid = document.querySelector(".calendar-grid");
   let counter = 0;
