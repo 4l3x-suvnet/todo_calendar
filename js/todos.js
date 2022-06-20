@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", main);
 
 const openFormButton = document.querySelector(".add");
 const closeFormButton = document.querySelector(".closeTodoForm");
-
 const toDoForm = document.querySelector("#todo-form");
 
 let todoItems = JSON.parse(localStorage.getItem("todoItems"));
@@ -10,13 +9,13 @@ if (!todoItems) {
   todoItems = [];
 }
 
+let idCounter =
+  todoItems.length == 0 ? 0 : todoItems[todoItems.length - 1].id + 1;
+
 function main() {
   bindEventHandlers();
   renderAllTodo();
 }
-
-let idCounter =
-  todoItems.length == 0 ? 0 : todoItems[todoItems.length - 1].id + 1;
 
 function bindEventHandlers() {
   toDoForm.onsubmit = handleFormSubmit;
@@ -190,7 +189,7 @@ function editTodo(todo) {
   openForm(todo);
 }
 
-// i swear prettier is inting
+// i swear prettier is ruining this readability.
 function sortTodoList() {
   todoItems.sort((a, b) =>
     a.date > b.date
@@ -210,48 +209,3 @@ openFormButton.addEventListener("click", () => {
 closeFormButton.addEventListener("click", () => {
   closeForm();
 });
-
-// Move into Form.js or something?
-function closeForm() {
-  document.querySelector(".form-popup").style.display = "none";
-  const fadeDiv = document.querySelector(".modal-fade");
-  fadeDiv.remove();
-}
-
-function openForm(todo = null) {
-  const submitFormButton = document.querySelector(".submitTodo");
-  const doc = document.querySelector(".form-popup");
-  doc.style.display = "block";
-
-  const main = document.querySelector(".content-container");
-  const fadeDiv = document.createElement("div");
-  fadeDiv.classList.add("modal-fade");
-  main.append(fadeDiv);
-
-  const form = doc.firstChild.nextSibling;
-  const elements = form.elements;
-
-  // is Add
-  if (todo == null) {
-    submitFormButton.innerHTML = "Submit";
-
-    elements["date"].value = selectedDayId;
-    elements["time"].value = null;
-    elements["title"].value = null;
-    elements["description"].value = null;
-
-    toDoForm.onsubmit = handleFormSubmit;
-  }
-  // is Edit
-  else {
-    submitFormButton.innerHTML = "Save";
-    // Set values to prev values
-    elements["date"].value = todo.date;
-    elements["time"].value = todo.todoTime;
-    elements["title"].value = todo.title;
-    elements["description"].value = todo.description;
-    alterId = todo.id;
-
-    toDoForm.onsubmit = handleEditFormSubmit;
-  }
-}
