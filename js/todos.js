@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 
 const openFormButton = document.querySelector(".add");
+const descriptionButton = document.querySelector(".todo-container");
 const closeFormButton = document.querySelector(".closeTodoForm");
 
 const toDoForm = document.querySelector("#todo-form");
@@ -202,6 +203,34 @@ function sortTodoList() {
       : -1
   );
 }
+
+let extendedTodo;
+function ToggleTodoDescription(e) {
+  const desc = document.getElementsByClassName("todo-desc");
+  const sameTodo = e.target === extendedTodo;
+
+  for (let index = 0; index < desc.length; index++) {
+
+    if(e.target === desc[index])
+    {
+      if(extendedTodo)
+      {
+        extendedTodo.classList.remove("extended");
+        extendedTodo = undefined;
+      }
+
+      if(!sameTodo)
+      {
+        extendedTodo = e.target;
+        e.target.classList.add("extended");
+      }
+    }
+  }
+}
+
+descriptionButton.addEventListener("click", (e) => {
+  ToggleTodoDescription(e);
+});
 
 openFormButton.addEventListener("click", () => {
   openForm();
