@@ -53,4 +53,5 @@ document
   .querySelector(".aside-Content-Container")
   .addEventListener("click", (e) => {
     renderCalendar(getAndRefreshCalendarDate());
+    renderAllTodo();
   });
