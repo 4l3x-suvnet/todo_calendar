@@ -260,17 +260,10 @@ aside::-webkit-scrollbar {
 .submitTodo {
   position: fixed;
   color: whitesmoke;
-  background-color: rgb(36, 111, 29);
-
   width: 100px;
   height: 50px;
-
   bottom: 5%;
   right: 5%;
-}
-
-.submitTodo:hover {
-  background-color: rgb(52, 141, 44);
 }
 
 .modal-fade {
@@ -417,8 +410,4 @@ aside::-webkit-scrollbar {
   transition: max-height 1s ease all;
   white-space: normal;
   max-height: 1000px;
-}
-
-button.add:hover, #prev-hover:hover, #next-hover:hover {
-  color: red;
 }

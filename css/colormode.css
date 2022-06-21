@@ -1,78 +1,102 @@
-html[data-theme = "light-mode"] {
-    --background-color: #d2dbd3;
-    --background-color-variant: #94a593;
-    --background-color-second-variant: #8aaa7c;
-    --background-color-third-variant: #a50000;
-    --background-color-fourth-variant: #8cb387;
-    --background-color-popup-variant: #d2dbd3;
-    --background-color-input-variant: #94a593;
-    
-    --text-color: rgb(0, 0, 0);
-    --text-color-select: #2d3b2b;
-    --text-color-variant: #dfdfdf;
-    --text-color-placeholder: #1e2e22;
+html[data-theme="light-mode"] {
+  --background-color: #d2dbd3;
+  --background-color-variant: #94a593;
+  --background-color-second-variant: #8aaa7c;
+  --background-color-third-variant: #a50000;
+  --background-color-fourth-variant: #8cb387;
+  --background-color-popup-variant: #d2dbd3;
+  --background-color-input-variant: #94a593;
+
+  --text-color: rgb(0, 0, 0);
+  --text-color-select: #2d3b2b;
+  --text-color-variant: #9e9e9e;
+  --text-color-placeholder: #1e2e22;
 }
 
-html[data-theme = "dark-mode"] {
-    --background-color: #1b1b20;
-    --background-color-variant: #3d3d4a;
-    --background-color-second-variant: #6b6b86;
-    --background-color-third-variant: #ff0000;
-    --background-color-fourth-variant: #313146e8;
-    --background-color-popup-variant: #3d3d4a;
-    --background-color-input-variant: #313146e8;
+html[data-theme="dark-mode"] {
+  --background-color: #1b1b20;
+  --background-color-variant: #3d3d4a;
+  --background-color-second-variant: #6b6b86;
+  --background-color-third-variant: #ff0000;
+  --background-color-fourth-variant: #313146e8;
+  --background-color-popup-variant: #3d3d4a;
+  --background-color-input-variant: #313146e8;
 
-    --text-color: whitesmoke;
-    --text-color-select: #1b1b20;
-    --text-color-variant: #9d9d9d;
-    --text-color-placeholder: #bebebe;
+  --text-color: whitesmoke;
+  --text-color-select: #1b1b20;
+  --text-color-variant: #9d9d9d;
+  --text-color-placeholder: #bebebe;
 }
 
-.form-popup {   
-    background-color: var(--background-color-popup-variant);
+.form-popup {
+  background-color: var(--background-color-popup-variant);
 }
 
-input, textarea {
-    background-color: var(--background-color-input-variant)
+input,
+textarea {
+  background-color: var(--background-color-input-variant);
 }
 
-.content-container {   
-    background-color: var(--background-color);
-}
-
-body, button, .calendar-grid div:hover, .selectedDay, .todo-date-container, .header-items input:checked + .slider, .slider, .todo-counter {
-    background-color: var(--background-color-variant) !important;
-  }
-
-button:hover {
-    background-color: var(--background-color-second-variant);
-}
-
-body, button, input, .todo-counter, textarea {
-    color: var(--text-color);
-}
-
-.prev-date, .next-date {
-    color: var(--text-color-variant);
-}
-
-.selectedDay {
-    color: var(--text-color-select) !important;
+.content-container {
+  background-color: var(--background-color);
 }
 
 .today {
     background-color: var(--background-color-fourth-variant);
+  }
+
+body,
+button,
+.calendar-grid div:hover,
+.selectedDay,
+.todo-date-container,
+.header-items input:checked + .slider,
+.slider,
+.todo-counter {
+  background-color: var(--background-color-variant);
 }
 
+button:hover {
+  background-color: var(--background-color-second-variant);
+}
+
+i:hover {
+  color: var(--background-color-second-variant);
+}
+
+body,
+button,
+input,
+.todo-counter,
+textarea {
+  color: var(--text-color);
+}
+
+.prev-date,
+.next-date {
+  color: var(--text-color-variant);
+}
 .holiday {
-    color: var(--background-color-third-variant);
+  color: var(--background-color-third-variant);
 }
 
 main {
-    border-left: 2px solid var(--background-color-variant);
+  border-left: 2px solid var(--background-color-variant);
 }
 
 ::placeholder {
-    opacity: 1;
-    color: var(--text-color-placeholder);
+  opacity: 1;
+  color: var(--text-color-placeholder);
+}
+
+.submitTodo {
+  background-color: rgb(36, 111, 29);
+}
+
+.submitTodo:hover {
+  background-color: rgb(52, 141, 44);
+}
+
+.selectedDay {
+  color: var(--text-color-select);
 }
