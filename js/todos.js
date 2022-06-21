@@ -76,71 +76,98 @@ function renderAllTodo(selectedDate = null) {
 function renderTodo(todo) {
   const list = document.querySelector(".todo-list");
 
+  let allTodoDates = document.querySelectorAll(".todo-date");
+  // due to the way we wanna render same dates under same div we wanna jump out if the date already exists cause then we've already renderd it.
+  for (let i = 0; i < allTodoDates.length; i++) {
+    if (allTodoDates[i].innerHTML === todo.date) {
+      return;
+    }
+  }
+
   // Create the <div class = todo-date-container>
   const itemContainer = document.createElement("div");
   itemContainer.classList.add("todo-date-container");
 
-  // Create the todo-date div
-  const dateItem = document.createElement("div");
-  dateItem.classList.add("todo-date");
-  dateItem.innerHTML = todo.date;
-  //Add date to big container
-  itemContainer.append(dateItem);
+  let allSameDateTodos = todoItems.filter((e) => e.date === todo.date);
   
-  //Create the Todo Container ( container in the container  :) )
-  const detailsContainer = document.createElement("div");
-  detailsContainer.classList.add("todo-container");
+  for (let i = 0; i < allSameDateTodos.length; i++) {
+    // create div for removing easier
+    const dataContainer = document.createElement("div");
+    
+    // only for the first add date.
+    if (i < 1) {
+      // Create the todo-date div
+      const dateItem = document.createElement("div");
+      dateItem.classList.add("todo-date");
+      dateItem.innerHTML = allSameDateTodos[i].date; //todo.date;
+      
+      //Add date to big container
+      dataContainer.append(dateItem); //itemContainer.append(dateItem);
+    }
+    // create all of the thingies
+    
+    //Create the Todo Container ( container in the container  :) )
+    const detailsContainer = document.createElement("div");
+    detailsContainer.classList.add("todo-container");
 
-  // Create Subcontainer
-  const detailsSubContainer = document.createElement("div");
-  detailsSubContainer.classList.add("todo-subcontainer");
+    // Create Subcontainer
+    const detailsSubContainer = document.createElement("div");
+    detailsSubContainer.classList.add("todo-subcontainer");
 
-  //Create and Add Title
-  const title = document.createElement("div");
-  title.classList.add("todo-title");
-  title.innerHTML = todo.title;
+    //Create and Add Title
+    const title = document.createElement("div");
+    title.classList.add("todo-title");
+    title.innerHTML = allSameDateTodos[i].title; //todo.title;
 
-  detailsSubContainer.append(title);
+    detailsSubContainer.append(title);
 
-  //Create button holder
-  const actionsContainer = document.createElement("div");
-  actionsContainer.classList.add("todo-actions");
+    //Create button holder
+    const actionsContainer = document.createElement("div");
+    actionsContainer.classList.add("todo-actions");
 
-  // Create and Add Buttons
-  const editButton = document.createElement("i");
-  editButton.classList.add("far");
-  editButton.classList.add("fa-edit");
-  editButton.addEventListener("click", () => editTodo(todo));
+    // Create and Add Buttons
+    const editButton = document.createElement("i");
+    editButton.classList.add("far");
+    editButton.classList.add("fa-edit");
+    editButton.addEventListener("click", () => editTodo(allSameDateTodos[i]));
 
-  const doneButton = document.createElement("i");
-  doneButton.classList.add("fa-solid");
-  doneButton.classList.add("fa-check");
-  doneButton.addEventListener("click", () => removeTodo(itemContainer, todo));
+    const doneButton = document.createElement("i");
+    doneButton.classList.add("fa-solid");
+    doneButton.classList.add("fa-check");
+    doneButton.addEventListener("click", () =>
+      removeTodo(dataContainer, allSameDateTodos[i])
+    );
 
-  const removeButton = document.createElement("i");
-  removeButton.classList.add("fa-regular");
-  removeButton.classList.add("fa-trash-can");
-  removeButton.addEventListener("click", () => removeTodo(itemContainer, todo));
+    const removeButton = document.createElement("i");
+    removeButton.classList.add("fa-regular");
+    removeButton.classList.add("fa-trash-can");
+    removeButton.addEventListener("click", () =>
+      removeTodo(dataContainer, allSameDateTodos[i])
+    );
 
-  actionsContainer.append(editButton);
-  actionsContainer.append(doneButton);
-  actionsContainer.append(removeButton);
+    actionsContainer.append(editButton);
+    actionsContainer.append(doneButton);
+    actionsContainer.append(removeButton);
 
-  //Add actions to subcontainer
-  detailsSubContainer.append(actionsContainer);
+    //Add actions to subcontainer
+    detailsSubContainer.append(actionsContainer);
 
-  // Create Description
-  const descriptionItem = document.createElement("div");
-  descriptionItem.classList.add("todo-desc");
-  descriptionItem.innerHTML = todo.description;
+    // Create Description
+    const descriptionItem = document.createElement("div");
+    descriptionItem.classList.add("todo-desc");
+    descriptionItem.innerHTML = allSameDateTodos[i].description; //todo.description;
 
-  // Add Desc and subcontainer
-  detailsContainer.append(detailsSubContainer);
-  detailsContainer.append(descriptionItem);
+    // Add Desc and subcontainer
+    detailsContainer.append(detailsSubContainer);
+    detailsContainer.append(descriptionItem);
 
-  itemContainer.append(detailsContainer);
-
-  itemContainer.addEventListener("click", (e) => ToggleTodoDescription(descriptionItem, e));
+    dataContainer.append(detailsContainer); //itemContainer.append(detailsContainer);
+    dataContainer.addEventListener("click", (e) =>
+      ToggleTodoDescription(descriptionItem, e)
+    );
+    
+    itemContainer.append(dataContainer);
+  }
 
   list.append(itemContainer);
 }
@@ -152,6 +179,7 @@ function removeTodo(itemContainer, todo) {
   window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
 
   counterTodosPerDate();
+  renderAllTodo(selectedDayId);
 }
 
 function addTodo(title, description, date = selectedDayId, todoTime) {
@@ -231,21 +259,17 @@ function sortTodoList() {
 
 function ToggleTodoDescription(obj, e) {
   // check if it's already extended.
-  if(obj.classList.contains("extended"))
-  {
+  if (obj.classList.contains("extended")) {
     //Check if the event was target @the desc div or just the whole container
-    if(e.target.classList.contains("extended"))
-    {
+    if (e.target.classList.contains("extended")) {
       return;
     }
-    obj.classList.remove("extended")
-  }
-  else
-  {
-  //close all existing extended.
+    obj.classList.remove("extended");
+  } else {
+    //close all existing extended.
     const allDesc = document.getElementsByClassName("todo-desc");
 
-    for(let i = 0; i < allDesc.length; i++)
+    for (let i = 0; i < allDesc.length; i++)
       allDesc[i].classList.remove("extended");
 
     //Then add extended to correct.
