@@ -143,8 +143,20 @@ function renderTodo(todo) {
     const doneButton = document.createElement("i");
     doneButton.classList.add("fa-solid");
     doneButton.classList.add("fa-check");
-    doneButton.addEventListener("click", () =>
-      removeTodo(dataContainer, allSameDateTodos[i])
+    doneButton.addEventListener("click", () => {
+      if(allSameDateTodos[i].isDone)
+      {
+        allSameDateTodos[i].isDone = false;
+        title.style.textDecoration = "";
+      }
+      else
+      {
+        allSameDateTodos[i].isDone = true;
+        title.style.textDecoration = "line-through";
+      }
+
+      window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
+    }
     );
 
     const removeButton = document.createElement("i");
@@ -176,6 +188,9 @@ function renderTodo(todo) {
     );
 
     itemContainer.append(dataContainer);
+    
+    if(!allSameDateTodos[i].isDone) title.style.textDecoration = "";
+    else title.style.textDecoration = "line-through";
   }
 
   list.append(itemContainer);
@@ -198,6 +213,7 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
     id: idCounter,
     date,
     todoTime,
+    isDone: false
   };
   idCounter++;
   todoItems.push(todo);
