@@ -89,28 +89,37 @@ function renderTodo(todo) {
   itemContainer.classList.add("todo-date-container");
 
   let allSameDateTodos = todoItems.filter((e) => e.date === todo.date);
-  
+
   for (let i = 0; i < allSameDateTodos.length; i++) {
     // create div for removing easier
     const dataContainer = document.createElement("div");
-    
+
     // only for the first add date.
     if (i < 1) {
       // Create the todo-date div
       const dateItem = document.createElement("div");
       dateItem.classList.add("todo-date");
       dateItem.innerHTML = allSameDateTodos[i].date; //todo.date;
-      
+
       //Add date to big container
       dataContainer.append(dateItem); //itemContainer.append(dateItem);
     }
     // create all of the thingies
-    
+
     //Create the Todo Container ( container in the container  :) )
     const detailsContainer = document.createElement("div");
     detailsContainer.classList.add("todo-container");
 
-    // Create Subcontainer
+    //Create TimeItem
+    if (allSameDateTodos[i].todoTime != null) {
+      const timeItem = document.createElement("div");
+      timeItem.classList.add("todo-time");
+      timeItem.innerHTML = allSameDateTodos[i].todoTime;
+
+      detailsContainer.append(timeItem);
+    }
+
+    // Create Subcontainer ((Title + Actions))
     const detailsSubContainer = document.createElement("div");
     detailsSubContainer.classList.add("todo-subcontainer");
 
@@ -165,7 +174,7 @@ function renderTodo(todo) {
     dataContainer.addEventListener("click", (e) =>
       ToggleTodoDescription(descriptionItem, e)
     );
-    
+
     itemContainer.append(dataContainer);
   }
 
