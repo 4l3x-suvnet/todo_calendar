@@ -7,7 +7,6 @@ let navigateMonth = date.getMonth();
 
 async function main() {
   getAndRefreshCalendarDate();
-  setDataTheme(theme); // TODO: Load theme from localstorage, initial theme should be dark-mode
   await renderCalendar();
 }
 

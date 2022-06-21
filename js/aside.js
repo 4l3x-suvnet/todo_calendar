@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main() {
   renderDay();
+  initColorMode();
 }
 
 function renderDay() {
