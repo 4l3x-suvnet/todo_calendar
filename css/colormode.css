@@ -32,7 +32,7 @@ html[data-theme = "dark-mode"] {
     background-color: var(--background-color-popup-variant);
 }
 
-input {
+input, textarea {
     background-color: var(--background-color-input-variant)
 }
 
@@ -48,7 +48,7 @@ button:hover {
     background-color: var(--background-color-second-variant);
 }
 
-body, button, input, .todo-counter {
+body, button, input, .todo-counter, textarea {
     color: var(--text-color);
 }
 
