@@ -418,3 +418,7 @@ aside::-webkit-scrollbar {
   white-space: normal;
   max-height: 1000px;
 }
+
+button.add:hover, #prev-hover:hover, #next-hover:hover {
+  color: red;
+}
