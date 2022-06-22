@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", main);
 
-const openFormButton = document.querySelector(".add");
-const descriptionButton = document.querySelector(".todo-container");
-const closeFormButton = document.querySelector(".closeTodoForm");
-const toDoForm = document.querySelector("#todo-form");
-
 let todoItems = JSON.parse(localStorage.getItem("todoItems"));
 if (!todoItems) {
   todoItems = [];
@@ -36,7 +31,6 @@ function handleFormSubmit(e) {
   );
 }
 
-let alterId = null;
 function handleEditFormSubmit(e) {
   e.preventDefault();
 
@@ -144,20 +138,16 @@ function renderTodo(todo) {
     doneButton.classList.add("fa-solid");
     doneButton.classList.add("fa-check");
     doneButton.addEventListener("click", () => {
-      if(allSameDateTodos[i].isDone)
-      {
+      if (allSameDateTodos[i].isDone) {
         allSameDateTodos[i].isDone = false;
         title.style.textDecoration = "";
-      }
-      else
-      {
+      } else {
         allSameDateTodos[i].isDone = true;
         title.style.textDecoration = "line-through";
       }
 
       window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
-    }
-    );
+    });
 
     const removeButton = document.createElement("i");
     removeButton.classList.add("fa-regular");
@@ -188,8 +178,8 @@ function renderTodo(todo) {
     );
 
     itemContainer.append(dataContainer);
-    
-    if(!allSameDateTodos[i].isDone) title.style.textDecoration = "";
+
+    if (!allSameDateTodos[i].isDone) title.style.textDecoration = "";
     else title.style.textDecoration = "line-through";
   }
 
@@ -213,7 +203,7 @@ function addTodo(title, description, date = selectedDayId, todoTime) {
     id: idCounter,
     date,
     todoTime,
-    isDone: false
+    isDone: false,
   };
   idCounter++;
   todoItems.push(todo);

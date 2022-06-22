@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FantastiCal</title>
     <link rel="stylesheet" href="css/global.css">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <script defer src="js/globalvariables.js"></script>
     <script defer src="js/weather.js"></script>
     <script defer src="js/form.js"></script>
     <script defer src="js/todos.js"></script>
@@ -31,20 +32,20 @@
         <div class="form-popup">
             <form class="form-container" id="todo-form">
                 <h1>TODO</h1>
-        
+
                 <label for="TodoTitle"><b>Title</b></label>
                 <input type="text" placeholder="Enter Title" name="title" required>
-        
+
                 <label for="date"><b>Date</b></label>
                 <input type="date" placeholder="Enter Date" name="date" required>
 
                 <label for="time"><b>Time</b></label>
-                <input type="time" placeholder="Enter Time" name="time" >
+                <input type="time" placeholder="Enter Time" name="time">
 
                 <label for="desc"><b>Description</b></label>
                 <textarea name="description" placeholder="Enter Description" maxlength="150">
                 </textarea>
-        
+
                 <div class="addtodo-button-container">
                     <button type="submit" class="submitTodo">Submit</button>
                     <button type="button" class="closeTodoForm">Close</button>
@@ -53,19 +54,19 @@
         </div>
         <aside>
             <header>
-            <div class="header-items">
-                <h1>FantastiCal</h1>
-                <label class="switch">
-                  <input type="checkbox" id="colorMode">
-                  <span class="slider round"></span>
-                </label>
+                <div class="header-items">
+                    <h1>FantastiCal</h1>
+                    <label class="switch">
+                        <input type="checkbox" id="colorMode">
+                        <span class="slider round"></span>
+                    </label>
                 </div>
             </header>
             <div class="aside-header">
                 <div class="aside-Content-Container">
                     <h3>Place holder for day</h3>
                     <h4>Place holder for date</h4>
-                    <div class="weatherContainer">    
+                    <div class="weatherContainer">
                         <div class="weatherCity"></div>
                         <div class="weather"></div>
                     </div>
@@ -79,34 +80,36 @@
                     <!-- in todo-date-container, display todo's by distinct date -->
                     <div class="todo-date-container">
                         <div class="todo-date">2022-06-23</div>
-                      <div class="todo-container">
-                        <div class="todo-subcontainer">
-                        <div class="todo-title">Presentation</div>
-                        <div class="todo-actions">
-                          <i class="far fa-edit"></i>
-                            <i class="fa-solid fa-check"></i>
-                            <i class="fa-regular fa-trash-can"></i>
+                        <div class="todo-container">
+                            <div class="todo-subcontainer">
+                                <div class="todo-title">Presentation</div>
+                                <div class="todo-actions">
+                                    <i class="far fa-edit"></i>
+                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </div>
+                            </div>
+                            <div class="todo-desc">FantastiCal presentation at 14.30</div>
                         </div>
-                        </div>
-                        <div class="todo-desc">FantastiCal presentation at 14.30</div>
-                      </div>
                     </div>
                     <div class="todo-date-container">
                         <div class="todo-date">2022-08-25</div>
-                      <div class="todo-container">
-                        <div class="todo-subcontainer">
-                        <div class="todo-title">Test</div>
-                        <div class="todo-actions">
-                          <i class="far fa-edit"></i>
-                            <i class="fa-solid fa-check"></i>
-                            <i class="fa-regular fa-trash-can"></i>
+                        <div class="todo-container">
+                            <div class="todo-subcontainer">
+                                <div class="todo-title">Test</div>
+                                <div class="todo-actions">
+                                    <i class="far fa-edit"></i>
+                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </div>
+                            </div>
+                            <div class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+                                aliquid sint doloribus ex provident! Distinctio sint porro, quis dolores est repellat
+                                ipsa laudantium itaque dolore quia qui omnis saepe perspiciatis!</div>
                         </div>
-                        </div>
-                        <div class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aliquid sint doloribus ex provident! Distinctio sint porro, quis dolores est repellat ipsa laudantium itaque dolore quia qui omnis saepe perspiciatis!</div>
-                      </div>
                     </div>
-                  </div>
                 </div>
+            </div>
         </aside>
 
         <main class="calendar">

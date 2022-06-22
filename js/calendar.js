@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", main);
 
-// Scope variable
-let date = new Date();
-const maxDays = 42;
-let navigateMonth = date.getMonth();
-
 async function main() {
   getAndRefreshCalendarDate();
   await renderCalendar();
@@ -191,9 +186,6 @@ function BindCalendarEvents() {
   }
 }
 
-//TODO, perhaps remove global scope variable if cba?
-let selectedDay;
-let selectedDayId;
 function ToggleSelectedDay(e) {
   const className = "selectedDay";
   const targetDay = e.target;
@@ -229,13 +221,12 @@ function counterTodosPerDate() {
   for (let i = 0; i < grid.children.length; i++) {
     const numberOfTodos = document.createElement("div");
     numberOfTodos.classList.add("todo-counter");
-    
+
     const smallTodoItemContainer = document.createElement("div");
     smallTodoItemContainer.classList.add("todo-item-small-container");
 
     for (let index = 0; index < todoItems.length; index++) {
       if (grid.children[i].id === todoItems[index].date) {
-        
         counter++;
 
         const smallTodoItemContent = document.createElement("div");
@@ -243,9 +234,10 @@ function counterTodosPerDate() {
 
         grid.children[i].append(numberOfTodos);
         grid.children[i].append(smallTodoItemContainer);
-        
+
         smallTodoItemContainer.append(smallTodoItemContent);
-        smallTodoItemContent.innerHTML = todoItems[index].todoTime + ' - ' + todoItems[index].title;
+        smallTodoItemContent.innerHTML =
+          todoItems[index].todoTime + " - " + todoItems[index].title;
       }
       numberOfTodos.innerHTML = counter;
     }
