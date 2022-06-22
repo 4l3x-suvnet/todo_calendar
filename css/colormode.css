@@ -52,7 +52,7 @@ button,
 .todo-date-container,
 .header-items input:checked + .slider,
 .slider,
-.todo-counter {
+.todo-counter, .weather i:hover ~ #weatherInfo {
   background-color: var(--background-color-variant);
 }
 
