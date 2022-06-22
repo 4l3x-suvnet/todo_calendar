@@ -61,19 +61,27 @@
   align-items: center;
   justify-content: start;
   position: relative;
+  margin-top: 1rem;
 }
 
 .weather i {
-  margin-right: .5rem;
   font-size: 32px;
   position: relative;
 }
 
-#weatherInfo {
+#weatherInfo, #tempInfo {
   display: none;
 }
 
+.weather .tempIcons:hover ~ #tempInfo {
+  left: 15%;
+}
+
 .weather i:hover ~ #weatherInfo {
+  bottom: 100%;
+}
+
+.weather i:hover ~ #weatherInfo, .weather .tempIcons:hover ~ #tempInfo {
   display: block;
   position: absolute;
   bottom: 100%;
@@ -85,12 +93,16 @@
   text-transform: capitalize;
 }
 
-#weatherInfo i {
+#weatherInfo i, #tempInfo i {
   font-size: 22px;
 }
 
-#weatherInfo div {
+#weatherInfo div, #tempInfo div {
   margin-bottom: .25rem;
+}
+
+#tempInfo {
+  min-width: 7rem;
 }
 
 .wind, .humidity {
@@ -192,7 +204,7 @@ button {
   gap: 0.5rem;
 }
 
-.todo-date-container, .weather i:hover ~ #weatherInfo {
+.todo-date-container, .weather i:hover ~ #weatherInfo, .weather .tempIcons:hover ~ #tempInfo {
   border-radius: 10px;
   padding: 10px;
 }
@@ -239,7 +251,7 @@ input, textarea {
 
 button,
 input,
-.todo-date-container, textarea, .weather i:hover ~ #weatherInfo {
+.todo-date-container, textarea, .weather i:hover ~ #weatherInfo, .weather .tempIcons:hover ~ #tempInfo {
   box-shadow: 2px 4px rgba(0, 0, 0, 0.75);
 }
 
@@ -450,4 +462,37 @@ aside::-webkit-scrollbar {
   transition: max-height 1s ease all;
   white-space: normal;
   max-height: 1000px;
+}
+
+.fa-solid.fa-circle {
+  align-self: end;
+}
+
+.fa-solid.fa-circle-dot {
+  align-self: start;
+}
+
+.fa-solid.fa-circle, .fa-solid.fa-circle-dot {
+  display: flex;
+  font-size: 5px;
+}
+
+.weatherIcon {
+  margin-right: .5rem;
+}
+
+.d-flex, .tempIcons {
+  display: flex;
+}
+
+.tempIcons {
+  gap: .15rem;
+}
+
+.tempIcons i {
+  font-size: 26px;
+}
+
+.justify-space-between {
+  justify-content: space-between;
 }

@@ -52,7 +52,7 @@ button,
 .todo-date-container,
 .header-items input:checked + .slider,
 .slider,
-.todo-counter, .weather i:hover ~ #weatherInfo {
+.todo-counter, .weather i:hover ~ #weatherInfo, .weather .tempIcons:hover ~ #tempInfo {
   background-color: var(--background-color-variant);
 }
 
@@ -60,7 +60,7 @@ button:hover {
   background-color: var(--background-color-second-variant);
 }
 
-i:hover {
+.weatherIcon:hover, .prev:hover, .next:hover, .tempIcons:hover, .todo-actions i:hover {
   color: var(--background-color-second-variant);
 }
 
