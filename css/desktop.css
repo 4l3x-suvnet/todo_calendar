@@ -1,10 +1,14 @@
-.content-container,
-.form-popup {
+.content-container {
   display: grid;
   grid-template-columns: 2fr 4.5fr;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   max-width: 80rem;
   margin: 0 auto;
+  /* box-shadow: 8px 8px rgba(27, 27, 32, 0.3); */
+}
+
+.content-container, .form-popup {
+  border-radius: 20px;
   box-shadow: 8px 8px rgba(27, 27, 32, 0.3);
 }
 
@@ -56,6 +60,42 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  position: relative;
+}
+
+.weather i {
+  margin-right: .5rem;
+  font-size: 32px;
+  position: relative;
+}
+
+#weatherInfo {
+  display: none;
+}
+
+.weather i:hover ~ #weatherInfo {
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  z-index: 100;
+  padding: 5px 15px;
+}
+
+#weatherInfo div::first-letter {
+  text-transform: capitalize;
+}
+
+#weatherInfo i {
+  font-size: 22px;
+}
+
+#weatherInfo div {
+  margin-bottom: .25rem;
+}
+
+.wind, .humidity {
+  display: flex;
+  align-items: center;
 }
 
 .aside-header h1,
@@ -152,7 +192,7 @@ button {
   gap: 0.5rem;
 }
 
-.todo-date-container {
+.todo-date-container, .weather i:hover ~ #weatherInfo {
   border-radius: 10px;
   padding: 10px;
 }
@@ -199,7 +239,7 @@ input, textarea {
 
 button,
 input,
-.todo-date-container, textarea {
+.todo-date-container, textarea, .weather i:hover ~ #weatherInfo {
   box-shadow: 2px 4px rgba(0, 0, 0, 0.75);
 }
 
