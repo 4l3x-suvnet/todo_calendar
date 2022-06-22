@@ -204,9 +204,6 @@ function ToggleSelectedDay(e) {
   }
 
   renderAllTodo(selectedDayId);
-
-  //addTodoToCalendar();
-  return selectedDayId;
 }
 
 function counterTodosPerDate() {
