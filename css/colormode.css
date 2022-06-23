@@ -9,7 +9,7 @@ html[data-theme="light-mode"] {
 
   --text-color: rgb(0, 0, 0);
   --text-color-select: #2d3b2b;
-  --text-color-variant: #9e9e9e;
+  --text-color-variant: #0000008a;
   --text-color-placeholder: #1e2e22;
 }
 
@@ -51,9 +51,17 @@ button,
 .selectedDay,
 .todo-date-container,
 .header-items input:checked + .slider,
-.slider,
+.slider, .todo-counter:hover + .todo-item-small-container,
 .todo-counter, .weather i:hover ~ #weatherInfo, .weather .tempIcons:hover ~ #tempInfo {
   background-color: var(--background-color-variant);
+}
+
+.todo-counter:hover + .todo-item-small-container {
+  border-color: var(--text-color-select);
+}
+
+.slider::before {
+  background: var(--text-color);
 }
 
 button:hover {
