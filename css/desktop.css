@@ -36,6 +36,8 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.4)
 }
 
 .calendar-grid div {
@@ -53,7 +55,7 @@
 
 .weekdays div,
 .calendar-grid div {
-  width: calc(100% / 7 - 0.2rem);
+  width: calc(100% / 7);
 }
 
 .weather {
@@ -267,11 +269,6 @@ aside::-webkit-scrollbar {
 
 .calendar-grid div {
   border-radius: 10px;
-}
-
-.calendar-grid,
-.weekdays {
-  gap: 0.2rem;
 }
 
 .todo-container {
@@ -495,4 +492,25 @@ aside::-webkit-scrollbar {
 
 .justify-space-between {
   justify-content: space-between;
+}
+
+.calendar-grid > div {
+  border-radius: 0px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.calendar-grid > div:nth-child(1) {
+  border-radius: 10px 0px 0px 0px !important;
+}
+
+.calendar-grid > div:nth-child(7) {
+  border-radius: 0px 10px 0px 0px !important;
+}
+
+.calendar-grid > div:nth-child(36) {
+  border-radius: 0px 0px 0px 10px !important;
+}
+
+.calendar-grid > div:nth-child(42) {
+  border-radius: 0px 0px 10px 0px !important;
 }
