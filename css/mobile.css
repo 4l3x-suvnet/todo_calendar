@@ -1,7 +1,4 @@
 @media only screen and (max-width: 475px) {
-    * {
-        font-size: small !important;
-    }
 
     .calendar {
         display: none;
@@ -26,6 +23,10 @@
 
     input {
         height: 35px;
+    }
+
+    .form-popup {
+        width: 20rem;
     }
 
     }
