@@ -41,3 +41,11 @@ function openForm(todo = null) {
     toDoForm.onsubmit = handleEditFormSubmit;
   }
 }
+
+openFormButton.addEventListener("click", () => {
+  openForm();
+});
+
+closeFormButton.addEventListener("click", () => {
+  closeForm();
+});

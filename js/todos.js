@@ -93,10 +93,10 @@ function renderTodo(todo) {
       // Create the todo-date div
       const dateItem = document.createElement("div");
       dateItem.classList.add("todo-date");
-      dateItem.innerHTML = allSameDateTodos[i].date; //todo.date;
+      dateItem.innerHTML = allSameDateTodos[i].date;
 
       //Add date to big container
-      dataContainer.append(dateItem); //itemContainer.append(dateItem);
+      dataContainer.append(dateItem);
     }
     // create all of the thingies
 
@@ -120,7 +120,7 @@ function renderTodo(todo) {
     //Create and Add Title
     const title = document.createElement("div");
     title.classList.add("todo-title");
-    title.innerHTML = allSameDateTodos[i].title; //todo.title;
+    title.innerHTML = allSameDateTodos[i].title;
 
     detailsSubContainer.append(title);
 
@@ -166,13 +166,13 @@ function renderTodo(todo) {
     // Create Description
     const descriptionItem = document.createElement("div");
     descriptionItem.classList.add("todo-desc");
-    descriptionItem.innerHTML = allSameDateTodos[i].description; //todo.description;
+    descriptionItem.innerHTML = allSameDateTodos[i].description;
 
     // Add Desc and subcontainer
     detailsContainer.append(detailsSubContainer);
     detailsContainer.append(descriptionItem);
 
-    dataContainer.append(detailsContainer); //itemContainer.append(detailsContainer);
+    dataContainer.append(detailsContainer);
     dataContainer.addEventListener("click", (e) =>
       ToggleTodoDescription(descriptionItem, e)
     );
@@ -230,7 +230,6 @@ function alterTodo(id, title, description, date, todoTime) {
   closeForm();
 }
 
-//TODO perhaps remove
 function editTodo(todo) {
   openForm(todo);
 }
@@ -247,30 +246,6 @@ function sortTodoList() {
       : -1
   );
 }
-
-// let extendedTodo;
-// function ToggleTodoDescription(e) {
-//   const desc = document.getElementsByClassName("todo-desc");
-//   const sameTodo = e.target === extendedTodo;
-
-//   for (let index = 0; index < desc.length; index++) {
-
-//     if(e.target === desc[index])
-//     {
-//       if(extendedTodo)
-//       {
-//         extendedTodo.classList.remove("extended");
-//         extendedTodo = undefined;
-//       }
-
-//       if(!sameTodo)
-//       {
-//         extendedTodo = e.target;
-//         e.target.classList.add("extended");
-//       }
-//     }
-//   }
-// }
 
 function ToggleTodoDescription(obj, e) {
   // check if it's already extended.
@@ -291,11 +266,3 @@ function ToggleTodoDescription(obj, e) {
     obj.classList.add("extended");
   }
 }
-
-openFormButton.addEventListener("click", () => {
-  openForm();
-});
-
-closeFormButton.addEventListener("click", () => {
-  closeForm();
-});
